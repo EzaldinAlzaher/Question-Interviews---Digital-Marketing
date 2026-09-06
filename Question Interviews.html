@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التجهيز لمقابلة التسويق الإلكتروني | CSML Pro</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cairo@4.5.10/index.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { font-family: 'Cairo', sans-serif; }
+  body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+  .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+  .card-hover { transition: all 0.3s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(99,102,241,0.2); }
+  .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gradient-btn { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+  .gradient-btn:hover { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+  .tab-active { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; }
+  .fade-in { animation: fadeIn 0.5s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .accordion-content.open { max-height: 3000px; }
+  .pulse-dot { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #1e293b; }
+  ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+  .scenario-card { border-right: 4px solid #6366f1; }
+  .chip { display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 12px; margin: 2px; }
+  .quiz-option { cursor: pointer; transition: all 0.2s; }
+  .quiz-option:hover { background: rgba(99,102,241,0.1); border-color: #6366f1; }
+  .quiz-option.correct { background: rgba(34,197,94,0.2); border-color: #22c55e; }
+  .quiz-option.wrong { background: rgba(239,68,68,0.2); border-color: #ef4444; }
+  .new-badge { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); color: white; font-size: 10px; padding: 2px 8px; border-radius: 9999px; font-weight: bold; }
+</style>
+</head>
+<body class="text-gray-100 min-h-screen">
+
+<!-- Header -->
+<header class="glass sticky top-0 z-50 border-b border-white/10">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-xl gradient-btn flex items-center justify-center">
+        <i class="fas fa-rocket text-xl"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold gradient-text">CSML Pro</h1>
+        <p class="text-xs text-gray-400">التجهيز الاحترافي لمقابلة التسويق الإلكتروني</p>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center gap-2 text-sm">
+      <span class="pulse-dot w-2 h-2 bg-green-400 rounded-full"></span>
+      <span class="text-gray-400">By: Ezaldin Alzaher</span>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="container mx-auto px-4 py-12 text-center">
+  <div class="inline-block mb-4 px-4 py-1 rounded-full glass text-sm text-indigo-300">
+    <i class="fas fa-star ml-1"></i> دليل شامل من خبير تسويق إلكتروني
+  </div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">تجهيزك لمقابلة التسويق الإلكتروني</h2>
+  <p class="text-gray-400 max-w-2xl mx-auto">أسئلة، سيناريوهات، اختبارات، ونماذج استراتيجية شاملة (STP, SWOT, 8Ps, Porter's 5 Forces, SEO, Branding, Storytelling, Consumer Behavior) مع إجابات احترافية</p>
+  <div class="flex flex-wrap justify-center gap-3 mt-6">
+    <div class="glass px-4 py-2 rounded-lg"><i class="fas fa-question-circle text-indigo-400 ml-2"></i><span id="totalQCount">50+</span> سؤال</div>
+    <div class="glass px-4 py-2 rounded-lg"><i class="fas fa-lightbulb text-yellow-400 ml-2"></i><span id="totalSCount">15</span> سيناريو</div>
+    <div class="glass px-4 py-2 rounded-lg"><i class="fas fa-graduation-cap text-green-400 ml-2"></i>اختبارات تفاعلية</div>
+    <div class="glass px-4 py-2 rounded-lg"><i class="fas fa-sitemap text-purple-400 ml-2"></i><span id="totalFCount">20</span> نموذج</div>
+  </div>
+</section>
+
+<!-- Tabs -->
+<div class="container mx-auto px-4">
+  <div class="flex flex-wrap gap-2 mb-6 justify-center">
+    <button onclick="switchTab('questions')" id="tab-questions" class="tab-active px-5 py-2 rounded-lg text-sm font-medium transition">
+      <i class="fas fa-comments ml-1"></i>أسئلة المقابلة
+    </button>
+    <button onclick="switchTab('scenarios')" id="tab-scenarios" class="glass px-5 py-2 rounded-lg text-sm font-medium transition hover:bg-white/10">
+      <i class="fas fa-bolt ml-1"></i>السيناريوهات
+    </button>
+    <button onclick="switchTab('quiz')" id="tab-quiz" class="glass px-5 py-2 rounded-lg text-sm font-medium transition hover:bg-white/10">
+      <i class="fas fa-clipboard-check ml-1"></i>الاختبارات
+    </button>
+    <button onclick="switchTab('frameworks')" id="tab-frameworks" class="glass px-5 py-2 rounded-lg text-sm font-medium transition hover:bg-white/10">
+      <i class="fas fa-sitemap ml-1"></i>النماذج
+    </button>
+    <button onclick="switchTab('terms')" id="tab-terms" class="glass px-5 py-2 rounded-lg text-sm font-medium transition hover:bg-white/10">
+      <i class="fas fa-book ml-1"></i>المصطلحات
+    </button>
+    <button onclick="switchTab('simulator')" id="tab-simulator" class="glass px-5 py-2 rounded-lg text-sm font-medium transition hover:bg-white/10">
+      <i class="fas fa-user-tie ml-1"></i>محاكي المقابلة
+    </button>
+  </div>
+</div>
+
+<!-- Content -->
+<main class="container mx-auto px-4 pb-20">
+
+  <!-- Questions Tab -->
+  <div id="content-questions" class="fade-in">
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <div class="glass p-4 rounded-xl">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center"><i class="fas fa-filter text-blue-400"></i></div>
+          <div>
+            <div class="text-xs text-gray-400">تصفية</div>
+            <select id="categoryFilter" onchange="filterQuestions()" class="bg-transparent text-sm font-medium outline-none">
+              <option value="all" class="bg-slate-800">الكل</option>
+              <option value="technical" class="bg-slate-800">تقنية</option>
+              <option value="strategic" class="bg-slate-800">استراتيجية</option>
+              <option value="behavioral" class="bg-slate-800">سلوكية</option>
+              <option value="salary" class="bg-slate-800">الراتب</option>
+              <option value="seo" class="bg-slate-800">SEO</option>
+              <option value="branding" class="bg-slate-800">العلامة التجارية</option>
+              <option value="content" class="bg-slate-800">المحتوى</option>
+              <option value="consumer" class="bg-slate-800">سلوك المستهلك</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="glass p-4 rounded-xl">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center"><i class="fas fa-search text-purple-400"></i></div>
+          <input id="searchInput" onkeyup="filterQuestions()" type="text" placeholder="ابحث عن سؤال..." class="bg-transparent text-sm outline-none flex-1">
+        </div>
+      </div>
+      <div class="glass p-4 rounded-xl">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center"><i class="fas fa-list text-green-400"></i></div>
+          <div class="text-sm"><span id="questionCount" class="font-bold text-green-400">0</span> <span class="text-gray-400">سؤال متاح</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionsList" class="space-y-3"></div>
+  </div>
+
+  <!-- Scenarios Tab -->
+  <div id="content-scenarios" class="hidden fade-in">
+    <div class="grid md:grid-cols-2 gap-4" id="scenariosList"></div>
+  </div>
+
+  <!-- Quiz Tab -->
+  <div id="content-quiz" class="hidden fade-in">
+    <div class="glass rounded-2xl p-6 mb-6">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h3 class="text-xl font-bold mb-1">اختبر معلوماتك</h3>
+          <p class="text-sm text-gray-400">اختر الإجابة الصحيحة لكل سؤال</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-green-400" id="quizScore">0</div>
+            <div class="text-xs text-gray-400">الصحيح</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-red-400" id="quizWrong">0</div>
+            <div class="text-xs text-gray-400">الخطأ</div>
+          </div>
+          <button onclick="resetQuiz()" class="gradient-btn px-4 py-2 rounded-lg text-sm"><i class="fas fa-redo ml-1"></i>إعادة</button>
+        </div>
+      </div>
+    </div>
+    <div id="quizList" class="space-y-4"></div>
+  </div>
+
+  <!-- Frameworks Tab -->
+  <div id="content-frameworks" class="hidden fade-in">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="frameworksList"></div>
+  </div>
+
+  <!-- Terms Tab -->
+  <div id="content-terms" class="hidden fade-in">
+    <div class="grid md:grid-cols-2 gap-4" id="termsList"></div>
+  </div>
+
+  <!-- Simulator Tab -->
+  <div id="content-simulator" class="hidden fade-in">
+    <div class="glass rounded-2xl p-6 mb-6">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-14 h-14 rounded-full gradient-btn flex items-center justify-center">
+          <i class="fas fa-user-tie text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">محاكي المقابلة</h3>
+          <p class="text-sm text-gray-400">تدرب على الإجابة ثم قارن مع الإجابة المثالية</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="randomQuestion()" class="gradient-btn px-4 py-2 rounded-lg text-sm"><i class="fas fa-dice ml-1"></i>سؤال عشوائي</button>
+        <button onclick="nextQuestion()" class="glass px-4 py-2 rounded-lg text-sm hover:bg-white/10"><i class="fas fa-forward ml-1"></i>التالي</button>
+        <button onclick="toggleAnswer()" class="glass px-4 py-2 rounded-lg text-sm hover:bg-white/10"><i class="fas fa-eye ml-1"></i>إظهار/إخفاء الإجابة</button>
+      </div>
+    </div>
+
+    <div class="glass rounded-2xl p-6 mb-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="chip bg-indigo-500/20 text-indigo-300" id="simCategory">استراتيجية</span>
+        <span class="text-xs text-gray-400">السؤال <span id="simNumber">1</span> من <span id="simTotal">0</span></span>
+      </div>
+      <h3 class="text-2xl font-bold mb-4 gradient-text" id="simQuestion">اضغط على "سؤال عشوائي" للبدء</h3>
+      <div id="simAnswer" class="hidden border-t border-white/10 pt-4 mt-4">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fas fa-lightbulb text-yellow-400"></i>
+          <span class="font-bold text-yellow-400">الإجابة المثالية:</span>
+        </div>
+        <div id="simAnswerText" class="text-gray-300 leading-relaxed"></div>
+      </div>
+    </div>
+
+    <div class="glass rounded-2xl p-6">
+      <h4 class="font-bold mb-3"><i class="fas fa-tips text-indigo-400 ml-2"></i>نصائح للمقابلة</h4>
+      <div class="grid md:grid-cols-2 gap-3">
+        <div class="flex gap-3 p-3 rounded-lg bg-white/5">
+          <i class="fas fa-check-circle text-green-400 mt-1"></i>
+          <div><div class="font-medium text-sm">استخدم STAR</div><div class="text-xs text-gray-400">Situation, Task, Action, Result</div></div>
+        </div>
+        <div class="flex gap-3 p-3 rounded-lg bg-white/5">
+          <i class="fas fa-check-circle text-green-400 mt-1"></i>
+          <div><div class="font-medium text-sm">أرقام حقيقية</div><div class="text-xs text-gray-400">اذكر نسب تحويل وميزانيات</div></div>
+        </div>
+        <div class="flex gap-3 p-3 rounded-lg bg-white/5">
+          <i class="fas fa-check-circle text-green-400 mt-1"></i>
+          <div><div class="font-medium text-sm">كن صادقاً</div><div class="text-xs text-gray-400">لا تبالغ في خبراتك</div></div>
+        </div>
+        <div class="flex gap-3 p-3 rounded-lg bg-white/5">
+          <i class="fas fa-check-circle text-green-400 mt-1"></i>
+          <div><div class="font-medium text-sm">اسأل أسئلة</div><div class="text-xs text-gray-400">أظهر اهتمامك بالشركة</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="glass border-t border-white/10 py-6 text-center text-sm text-gray-400">
+  <p>CSML Pro © 2026 | دليل التجهيز الاحترافي لمقابلات التسويق الإلكتروني</p>
+</footer>
+
+<script>
+// ============ DATA ============
+const questions = [
+  // ====== الأسئلة الأصلية ======
+  {
+    id: 1, category: 'technical',
+    q: 'ما الفرق بين B2B و B2C في التسويق الإلكتروني؟',
+    a: 'B2B (Business to Business) هو تسويق بين الشركات، يتميز بدورة شراء أطول، قرار شراء جماعي، علاقات طويلة الأمد، وقيمة صفقة عالية. بينما B2C (Business to Consumer) هو تسويق مباشرة للمستهلك النهائي، يتميز بقرار شراء فردي سريع، عاطفي أكثر، ودورة شراء قصيرة. في B2B نركز على ROI والقيمة المضافة، بينما في B2C نركز على العاطفة والعلامة التجارية. أدوات B2B مثل LinkedIn وEmail Marketing، وB2C مثل Instagram وTikTok.'
+  },
+  {
+    id: 2, category: 'strategic',
+    q: 'إذا أردنا البدء بالتسويق من الصفر، ماذا تفعل؟',
+    a: 'أتبع منهجية CSML: 1) أبحاث السوق (Market Research) - تحليل TAM/SAM/SOM لتحديد حجم السوق. 2) تحليل PESTEL للبيئة العامة. 3) تحليل Porter\'s 5 Forces لفهم المنافسة. 4) بناء Buyer Persona دقيق (العمر، الجنس، الدخل، السلوك، نقاط الألم). 5) تطبيق STP: تقسيم السوق (Segmentation)، استهداف (Targeting)، تموضع (Positioning). 6) تحليل SWOT وVRIO لتحديد الميزة التنافسية. 7) بناء المزيج التسويقي 8Ps. 8) تحديد KPIs واضحة. 9) إطلاق MVP وقياس النتائج. 10) التوسع التدريجي.'
+  },
+  {
+    id: 3, category: 'technical',
+    q: 'احكِ عن الحملة التسويقية الكاملة من البداية للنهاية',
+    a: 'الحملة تمر بـ 7 مراحل: 1) البحث: تحديد الهدف (SMART)، الجمهور، الميزانية. 2) الاستراتيجية: اختيار القنوات، الرسالة، الـ USP. 3) الإعداد: بناء Landing Page، Pixel، Creative، Copywriting. 4) الإطلاق: A/B Testing، Bid Strategy، Audience. 5) المراقبة: CTR، CPC، CPA، ROAS يومياً. 6) التحسين: Scaling، Kill underperformers، Retargeting. 7) التقرير: ROI، Learnings، Next Steps. أستخدم Sales Funnel: Awareness → Consideration → Decision → Purchase → Loyalty.'
+  },
+  {
+    id: 4, category: 'behavioral',
+    q: 'إذا اكتشفت خطأ في إعلان منشور، ماذا تفعل؟',
+    a: '1) إيقاف الإعلان فوراً (Pause) لمنع استمرار الخطأ. 2) تقييم حجم الضرر: كم شخص شاهده؟ كم تكلفة؟ 3) إصلاح الخطأ وإعادة النشر. 4) التواصل مع الإدارة بشفافية. 5) توثيق الخطأ في Post-Mortem. 6) وضع Checklist لمنع التكرار. 7) مراجعة عملية الموافقة (Approval Process). الأخطاء الشائعة: سعر خاطئ، رابط معطل، خطأ إملائي، صورة مسيئة. الحل الجذري: Double-Check System قبل النشر.'
+  },
+  {
+    id: 5, category: 'strategic',
+    q: 'إذا طلب العميل إيقاف الحملة التسويقية، ماذا تفعل ومن يتحمل التكلفة؟',
+    a: '1) أستفسر عن السبب أولاً (قد يكون سوء فهم). 2) أوضح العواقب: فقدان الزخم، Penalty من المنصات، خسارة Data. 3) أقدم بدائل: تخفيض الميزانية بدلاً من الإيقاف، Pause مؤقت، تغيير الاستراتيجية. 4) إذا أصر: أنفذ فوراً مع توثيق كتابي. 5) بخصوص التكلفة: حسب العقد - عادةً التكلفة التي تم إنفاقها حتى لحظة الإيقاف تقع على العميل، لكن يجب أن يكون هناك بند واضح في العقد. 6) أقدم تقرير نهائي بالنتائج حتى لحظة الإيقاف.'
+  },
+  {
+    id: 6, category: 'behavioral',
+    q: 'ماذا ستستفيد شركتنا منك إذا قمنا بتوظيفك؟',
+    a: 'سأقدم 5 قيم رئيسية: 1) خبرة 15 سنة في بناء حملات حققت ROI يتجاوز 300%. 2) منهجية علمية مبنية على Data لا حدس. 3) إتقان كامل للنماذج: STP, SWOT, 8Ps, Porter\'s 5 Forces, VRIO, PESTEL. 4) قدرة على تقليل تكلفة الاكتساب (CAC) بنسبة 30-50% خلال 90 يوم. 5) بناء أنظمة تسويق مؤتمتة توفر 40% من الوقت. سأبدأ بـ 30-60-90 Day Plan: أول 30 يوم تحليل، 60 يوم تنفيذ، 90 يوم قياس وتحسين.'
+  },
+  {
+    id: 7, category: 'technical',
+    q: 'كيف تعمل تقرير لحملة تسويقية لشخص غير تقني؟',
+    a: 'أتبع قاعدة "KISS" (Keep It Simple, Stupid): 1) Executive Summary في صفحة واحدة. 2) أستخدم Infographics وCharts بدلاً من جداول معقدة. 3) أترجم الأرقام لأعمال: "ROAS 3x" = "كل 1$ أنفقناها أرجع 3$". 4) أركز على 3-5 KPIs رئيسية فقط. 5) أستخدم Traffic Light System: أخضر (جيد)، أصفر (تحذير)، أحمر (مشكلة). 6) أقدم توصيات عملية واضحة. 7) أشرح المصطلحات التقنية في Appendix. الهدف: اتخاذ قرار في 5 دقائق.'
+  },
+  {
+    id: 8, category: 'technical',
+    q: 'ما هو KPI وكيف تختاره؟',
+    a: 'KPI (Key Performance Indicator) هو مؤشر أداء رئيسي يقيس التقدم نحو هدف. شروط KPI الجيد (SMART): Specific, Measurable, Achievable, Relevant, Time-bound. أمثلة: - Awareness: Reach, Impressions - Consideration: CTR, Engagement - Conversion: CPA, Conversion Rate - Revenue: ROAS, LTV - Retention: Churn Rate, Repeat Rate أختار KPI بناءً على: 1) الهدف الاستراتيجي 2) مرحلة Funnel 3) نوع الحملة. قاعدة: 3-5 KPIs كحد أقصى لكل حملة.'
+  },
+  {
+    id: 9, category: 'technical',
+    q: 'حملة بنسبة تحويل مرتفعة ولكن لا نتائج، ما المشكلة؟',
+    a: 'هذه مشكلة كلاسيكية! نسبة التحويل العالية + لا نتائج = مشكلة في جودة Leads أو Volume. الأسباب المحتملة: 1) Sample Size صغير جداً (مثلاً 5 conversions من 10 visitors = 50% لكن لا قيمة). 2) Audience خاطئ (يتحولون لكن لا يشترون). 3) مشكلة في Funnel ما بعد التحويل (Sales team, fulfillment). 4) Conversion Event خاطئ (يقيس Form Submit لا Purchase). 5) Bot traffic. الحل: أراجع Quality Score، Average Order Value، Lead-to-Customer Rate، وأصحح Event Tracking.'
+  },
+  {
+    id: 10, category: 'behavioral',
+    q: 'إذا اكتشفت أعداد خاطئة في الحملة، من يتحمل المسؤولية؟',
+    a: 'المسؤولية تتبع الهيكل: 1) إذا كان خطأ في الإعداد: مسؤولي كمدير حملة. 2) إذا كان خطأ في الموافقة: من وافق على الإعدادات. 3) إذا كان خطأ تقني من المنصة: نرفع Ticket ونوثق. الحل: 1) إيقاف الحملة فوراً. 2) تصحيح الخطأ. 3) إعادة حساب التكلفة الفعلية. 4) تقديم تقرير Incident Report. 5) وضع Double-Approval System. الأهم: لا ألوم الآخرين، أتحمل المسؤولية وأقدم حل. "المشكلة فرصة للتحسين".'
+  },
+  {
+    id: 11, category: 'technical',
+    q: 'كيف تعمل إيميلات مؤتمتة؟ اشرح الخطوات باختصار',
+    a: '7 خطوات: 1) تحديد الهدف (Welcome, Abandoned Cart, Re-engagement). 2) بناء Workflow في أداة (Mailchimp, ActiveCampaign, HubSpot). 3) تصميم Templates متجاوبة. 4) كتابة Copy شخصي (Segmentation). 5) ضبط Triggers: - Welcome: بعد Signup - Abandoned Cart: بعد 1 ساعة، 24 ساعة، 72 ساعة - Birthday: تاريخ الميلاد 6) A/B Testing للعناوين. 7) قياس: Open Rate, CTR, Conversion Rate. أتمتة = Right Message, Right Person, Right Time.'
+  },
+  {
+    id: 12, category: 'behavioral',
+    q: 'إذا عملت حملة وحصلت على نتائج عكسية، ماذا تفعل؟',
+    a: '1) لا أذعر - النتائج العكسية مصدر تعلم. 2) أوقف الحملة فوراً (Damage Control). 3) Autopsy كامل: - Creative مشكلة؟ - Audience خاطئ؟ - Offer غير جذاب؟ - Timing سيء؟ - Message غير واضح؟ 4) أراجع Data: CTR, CPC, Conversion Rate, Bounce Rate. 5) أقارن مع Hypothesis الأصلي. 6) أوثق Learnings في Post-Mortem. 7) أبني Hypothesis جديد وأختبر. 8) أقدم تقرير للإدارة بشفافية. الفشل = Data Gathering للنجاح القادم.'
+  },
+  {
+    id: 13, category: 'salary',
+    q: 'كم الراتب الذي تتوقعه؟',
+    a: 'إجابة احترافية: "قبل الحديث عن الراتب، أود فهم حجم المسؤولية، حجم الفريق، والميزانيات المُدارة. بناءً على خبرتي 15 سنة وقدرتي على تحقيق ROI 300%+، أتوقع راتب يعكس هذه القيمة. لكنني مرن وأؤمن بأن الراتب يجب أن يرتبط بالأداء. هل يمكنني معرفة Range الميزانية لهذه الوظيفة؟" نصائح: - لا تذكر رقماً أولاً - ابحث عن Market Rate (Glassdoor, LinkedIn) - اذكر Range وليس رقم ثابت - اربط الراتب بالقيمة المضافة - ضع في الحسبان: Bonus, Benefits, Growth'
+  },
+  {
+    id: 14, category: 'technical',
+    q: 'كيف تفرز بين إعلانات المبيعات والإعلانات الممولة في الموقع؟',
+    a: '3 طرق رئيسية: 1) URL Parameters: - /sponsored/ أو /ad/ للإعلانات الممولة - /organic/ أو /sales/ للإعلانات العادية - UTM tags: ?utm_source=ad vs ?utm_source=organic 2) Data Attributes: - data-type="sponsored" vs data-type="organic" - data-promoted="true/false" 3) Visual Indicators: - Badge "إعلان ممول" أو "Sponsored" - لون مختلف - أيقونة مميزة 4) Backend: جدول منفصل أو column "is_sponsored" في Database. الأهم: الشفافية مع المستخدم + تتبع دقيق للـ ROI.'
+  },
+  {
+    id: 15, category: 'behavioral',
+    q: 'هل تفضل العمل الفردي أم الجماعي ولماذا؟',
+    a: 'أفضل العمل الجماعي مع قدرتي على العمل الفردي. التسويق الإلكتروني بطبيعته Cross-Functional: يحتاج Sales, Design, Content, Dev, Analytics. العمل الجماعي = نتائج أفضل. لكن بعض المهام تحتاج Focus فردي: تحليل Data، كتابة Strategy، Creative Thinking. نموذجي المثالي: 70% جماعي (Planning, Brainstorming, Execution) + 30% فردي (Deep Work, Analysis). المفتاح: Communication واضحة + Ownership لكل مهمة.'
+  },
+  {
+    id: 16, category: 'technical',
+    q: 'ما هو EHTP في التسويق؟',
+    a: 'EHTP قد يشير لعدة مفاهيم حسب السياق: 1) قد يكون خطأ إملائي في AIDA (Attention, Interest, Desire, Action) - نموذج كلاسيكي في Copywriting. 2) قد يقصد EAT (Expertise, Authoritativeness, Trustworthiness) - معايير Google لتقييم المحتوى. 3) قد يكون مصطلح داخلي للشركة. نصيحة المقابلة: "هل يمكنك توضيح المقصود بـ EHTP في سياقكم؟ أريد التأكد من أننا نتحدث عن نفس المفهوم." هذا يُظهر احترافية وعدم خوض في افتراضات خاطئة.'
+  },
+  {
+    id: 17, category: 'strategic',
+    q: 'ما هي استراتيجية المحيط الأزرق وكيف تطبقها؟',
+    a: 'المحيط الأزرق (Blue Ocean) = إنشاء سوق جديد بدون منافسة، عكس الأحمر (منافسة دموية). ERRC Framework: 1) Eliminate (إلغاء): ما يمكن إلغاؤه من عوامل يقبلها السوق؟ 2) Reduce (تقليل): ما يمكن تقليله تحت المعيار؟ 3) Raise (رفع): ما يجب رفعه فوق المعيار؟ 4) Create (إنشاء): ما يجب إنشاؤه لم يُقدم من قبل؟ مثال Cirque du Soleil: ألغوا الحيوانات، قللوا الفكاهة، رفعوا الجودة الفنية، أنشأوا قصة مسرحية. النتيجة: سوق جديد بأسعار مرتفعة بدون منافسة.'
+  },
+  {
+    id: 18, category: 'technical',
+    q: 'اشرح نموذج STP بالتفصيل',
+    a: 'STP = Segmentation, Targeting, Positioning. 1) Segmentation (التقسيم): تقسيم السوق لشرائح متجانسة. معايير B2C: ديموغرافية، جغرافية، نفسية، سلوكية. معايير B2B: حجم الشركة، الصناعة، الميزانية. 2) Targeting (الاستهداف): اختيار أفضل شريحة بناءً على: حجم السوق، القوة الشرائية، سهولة الوصول، المنافسة، إمكانات النمو. نستخدم Scoring Matrix. 3) Positioning (التموضع): كيف نريد أن يُنظر إلينا في ذهن العميل؟ Porter\'s Generic Strategies: Cost Leadership, Differentiation, Focus. الرسالة: "نحن الأفضل لـ X لأننا Y".'
+  },
+  {
+    id: 19, category: 'technical',
+    q: 'ما هو VRIO وكيف تستخدمه؟',
+    a: 'VRIO = Value, Rarity, Imitability, Organization - لتحليل الموارد والقدرات وتحديد الميزة التنافسية المستدامة. - V (Value): هل المورد يضيف قيمة؟ - R (Rarity): هل هو نادر؟ - I (Imitability): هل صعب التقليد؟ - O (Organization): هل الشركة منظمة لاستغلاله؟ النتائج: - V فقط = Competitive Disadvantage - V+R = Unused Competitive Advantage - V+R+I = Temporary Advantage - V+R+I+O = Sustainable Competitive Advantage مثال: بيانات حصرية + خوارزمية فريدة + فريق منظم = ميزة مستدامة.'
+  },
+  {
+    id: 20, category: 'technical',
+    q: 'ما هو PESTEL ومتى تستخدمه؟',
+    a: 'PESTEL = تحليل البيئة الخارجية الكلية: P - Political (سياسي): قوانين، ضرائب، استقرار E - Economic (اقتصادي): نمو، تضخم، بطالة S - Social (اجتماعي): ديموغرافيا، ثقافة، عادات T - Technological (تقني): ابتكارات، R&D E - Environmental (بيئي): استدامة، قوانين بيئية L - Legal (قانوني): قوانين عمل، حماية مستهلك نستخدمه قبل: دخول سوق جديد، إطلاق منتج، تغيير استراتيجية. يُكمل بـ SWOT (PESTEL = Opportunities/Threats).'
+  },
+  {
+    id: 21, category: 'technical',
+    q: 'ما هو TAM, SAM, SOM؟',
+    a: 'TAM (Total Addressable Market) = إجمالي السوق المحتمل. مثال: كل من يحتاج تعلم لغة في العالم. SAM (Serviceable Available Market) = الجزء الذي يمكنك خدمته جغرافياً/تقنياً. مثال: الناطقين بالعربية. SOM (Serviceable Obtainable Market) = الجزء الواقعي الذي يمكنك الاستحواذ عليه. مثال: 5% من SAM في أول سنتين. الأهمية: - TAM يُظهر الرؤية الكبيرة - SAM يُحدد نطاق الخدمة - SOM يُحدد أهداف واقعية للمستثمرين. قاعدة: SOM = SAM × Market Share Realistic.'
+  },
+  {
+    id: 22, category: 'technical',
+    q: 'ما هو Sales Funnel ومراحله؟',
+    a: 'Sales Funnel = رحلة العميل من الوعي للولاء. 5 مراحل: 1) Awareness (الوعي): العميل يعرفك. KPI: Reach, Impressions. Tactics: Ads, Content, PR. 2) Consideration (الاهتمام): يفكر فيك. KPI: CTR, Engagement. Tactics: Webinars, Case Studies. 3) Decision (القرار): يقرر. KPI: Demo Requests. Tactics: Free Trial, Discount. 4) Purchase (الشراء): يشتري. KPI: Conversion Rate. Tactics: Easy Checkout. 5) Loyalty (الولاء): يكرر ويوصي. KPI: CLV, NPS. Tactics: Email, Loyalty Program. الهدف: تحويل كل مرحلة بأكبر كفاءة.'
+  },
+  {
+    id: 23, category: 'technical',
+    q: 'ما هو Buyer Persona وكيف تبنيه؟',
+    a: 'Buyer Persona = نموذج خيالي للعميل المثالي مبني على بيانات حقيقية. المكونات: 1) ديموغرافيا: العمر، الجنس، الدخل، الموقع، الوظيفة. 2) Psychographics: القيم، الاهتمامات، نمط الحياة. 3) Goals: ماذا يريد تحقيق؟ 4) Pain Points: ما الذي يمنعهم؟ 5) Buying Behavior: كيف يتخذ قرار الشراء؟ 6) Preferred Channels: أين يقضي وقته؟ 7) Objections: ما اعتراضاتهم؟ مصادر البيانات: Interviews, Surveys, Analytics, Sales Team, Social Media. مثال: "أحمد، 38 سنة، صاحب نشاط، يبحث عن تخفيف وزن، يفضل الدفع نقداً، يتأثر بالتقييمات".'
+  },
+  {
+    id: 24, category: 'technical',
+    q: 'ما هو المزيج التسويقي 8Ps؟',
+    a: '8Ps = Product, Price, Place, Promotion, People, Process, Physical Evidence, Productivity & Quality. 1) Product: دورة حياة المنتج، مميزات، Kano Model. 2) Price: Cost-plus, Value-based, Penetration, Skimming. 3) Place: توزيع مكثف، انتقائي، حصري. 4) Promotion: Advertising, PR, Sales Promo, Personal Selling. 5) People: تدريب، ثقافة، خدمة عملاء. 6) Process: سهولة، سرعة، أتمتة. 7) Physical Evidence: Branding، Packaging، موقع. 8) Productivity & Quality: KPIs، تحسين مستمر.'
+  },
+  {
+    id: 25, category: 'technical',
+    q: 'ما هو Porter\'s 5 Forces؟',
+    a: 'Porter\'s Five Forces = تحليل جاذبية الصناعة: 1) Industry Rivalry (المنافسة الداخلية): عدد المنافسين، تميز المنتج، حواجز الخروج. 2) Threat of New Entrants (تهديد الداخلين الجدد): حواجز الدخول، رأس المال، القوانين. 3) Threat of Substitutes (تهديد البدائل): جودة البدائل، سعرها، تكلفة التبديل. 4) Bargaining Power of Suppliers (قوة الموردين): عددهم، تكلفة التبديل، تميز مدخلاتهم. 5) Bargaining Power of Buyers (قوة المشترين): عددهم، حساسية السعر، معلوماتهم. التقييم: 1-5 لكل قوة. المجموع يُحدد جاذبية الصناعة.'
+  },
+  {
+    id: 26, category: 'technical',
+    q: 'ما هو Kano Model؟',
+    a: 'Kano Model = تصنيف متطلبات العميل لـ 5 فئات: 1) Must-Be (أساسية): غيابها يُسبب عدم رضا، وجودها طبيعي (مثل: فرامل السيارة). 2) Performance (أداء): كلما زادت زاد الرضا خطياً (مثل: سرعة الإنترنت). 3) Delighters (مفاجآت): غيابها لا يؤثر، وجودها يُسعد (مثل: هدية غير متوقعة). 4) Indifferent (غير مبالية): لا تؤثر سلباً أو إيجاباً. 5) Reverse (عكسية): وجودها يُسبب عدم رضا. الاستخدام: تحديد أولويات التطوير، تخصيص الميزانية، إدارة توقعات العميل. مع الوقت: Delighters → Performance → Must-Be.'
+  },
+  {
+    id: 27, category: 'strategic',
+    q: 'كيف تقيس نجاح حملة تسويقية؟',
+    a: 'أقيس النجاح على 4 مستويات (Phillips ROI): 1) Reaction: رضا العميل، Engagement. 2) Learning: ما الذي تعلمه الجمهور؟ 3) Behavior: هل غيّر سلوكه؟ 4) Results: الأثر المالي. KPIs حسب الهدف: - Brand Awareness: Reach, Impressions, Brand Search - Lead Generation: MQLs, SQLs, CPL - Sales: Revenue, ROAS, CAC - Retention: CLV, Churn Rate, NPS ROAS = Revenue / Ad Spend. ROI = (Revenue - Cost) / Cost × 100. قاعدة: لا تحكم على حملة من KPI واحد. انظر للصورة الكاملة.'
+  },
+  {
+    id: 28, category: 'technical',
+    q: 'ما الفرق بين SEO و SEM؟',
+    a: 'SEO (Search Engine Optimization) = تحسين الموقع للظهور طبيعياً في نتائج البحث. - مجاني (لكن يحتاج وقت) - نتائج طويلة الأمد - On-page + Off-page + Technical - KPI: Organic Traffic, Rankings, Domain Authority SEM (Search Engine Marketing) = إعلانات مدفوعة في محركات البحث. - مدفوع (PPC) - نتائج فورية - Google Ads, Bing Ads - KPI: CPC, CTR, Quality Score, ROAS الفرق الجوهري: SEO = استثمار طويل، SEM = شراء حركة فوري. الاستراتيجية المثالية: الاثنين معاً - SEM للنتائج السريعة، SEO للاستدامة.'
+  },
+  {
+    id: 29, category: 'technical',
+    q: 'ما هو A/B Testing وكيف تنفذه؟',
+    a: 'A/B Testing = مقارنة نسختين لتحديد الأفضل. الخطوات: 1) Hypothesis: "تغيير لون CTA من أزرق لأحمر سيزيد التحويل بنسبة 10%". 2) Variable: عنصر واحد فقط (Headline, Image, CTA, Color). 3) Sample Size: حساب إحصائي (عادة 1000+ لكل نسخة). 4) Duration: 1-2 أسبوع على الأقل. 5) Randomization: توزيع عشوائي. 6) Statistical Significance: 95% confidence level. 7) Analysis: Winner + Learnings. 8) Implementation: تطبيق الفائز. أخطاء شائعة: - اختبار عدة عناصر معاً - إيقاف مبكر - Sample صغير - عدم توثيق Learnings'
+  },
+  {
+    id: 30, category: 'technical',
+    q: 'ما هو Retargeting ومتى تستخدمه؟',
+    a: 'Retargeting = استهداف زار موقعك ولم يشتري. الأنواع: 1) Pixel-based: تتبع عبر Cookie (فوري لكن محدود). 2) List-based: عبر Email List (أبطأ لكن أدق). الاستخدام الأمثل: - Abandoned Cart: بعد 1 ساعة، 24 ساعة، 72 ساعة - Product View: عرض منتج مشابه - Category View: عرض منتجات ذات صلة - Homepage Visit: عرض القيمة المضافة - Past Customers: Upsell/Cross-sell Best Practices: - استبعد من اشتروا - مدة 30-90 يوم - Creative مختلف حسب المرحلة - Frequency Cap (3-5/day) - Retargeting يرفع Conversion Rate 50-150%.'
+  },
+
+  // ====== أسئلة SEO الجديدة ======
+  {
+    id: 31, category: 'seo', isNew: true,
+    q: 'ما هو SEO وما هي أنواعه الرئيسية؟',
+    a: 'SEO (Search Engine Optimization) = تحسين الموقع للظهور في نتائج محركات البحث بشكل طبيعي. الأنواع الرئيسية: 1) On-Page SEO: تحسين داخل الموقع - اختيار Keywords، تحسين Title Tags، Meta Descriptions، Headings (H1-H6)، Internal Linking، تحسين الصور (Alt Text)، جودة المحتوى. 2) Off-Page SEO: تحسين خارج الموقع - Backlinks، Guest Blogging، Social Signals، Brand Mentions. 3) Technical SEO: تحسين تقني - سرعة الموقع، Mobile-Friendly، HTTPS، XML Sitemap، Robots.txt، Schema Markup. 4) Local SEO: تحسين محلي - Google My Business، NAP Consistency، Local Citations. الهدف: زيادة Organic Traffic بجودة عالية.'
+  },
+  {
+    id: 32, category: 'seo', isNew: true,
+    q: 'اشرح خطوات On-Page SEO بالتفصيل',
+    a: 'On-Page SEO = 8 خطوات أساسية: 1) Keyword Research: استخدام أدوات مثل GKP، اختيار Long-tail Keywords، كثافة 2-3%. 2) URL Optimization: قصير، واضح، يحتوي Keyword. 3) Title Tag: 50-60 حرف، يحتوي Keyword، جذاب ومميز. 4) Meta Description: 120-160 حرف، يحتوي Keyword، يقدم وصف حقيقي. 5) Headings (H1-H6): H1 واحد فقط، H2 للأقسام، H3 داخل الأقسام، يحتوي Keywords. 6) Content: 1000+ كلمة، فقرات قصيرة (2-3 أسطر)، قوائم نقطية، صور محسنة. 7) Internal Linking: ربط الصفحات ببعض، Anchor Text وصفي. 8) Image Optimization: أسماء وصفية، Alt Text، ضغط الصور. أدوات القياس: Google Analytics, Search Console, Clarity.'
+  },
+  {
+    id: 33, category: 'seo', isNew: true,
+    q: 'ما هي Backlinks وكيف تبنيها؟',
+    a: 'Backlinks = روابط من مواقع أخرى لموقعك، من أقوى عوامل ترتيب Google. استراتيجيات بناء Backlinks عالية الجودة: 1) إنشاء محتوى عالي الجودة يستحق الإشارة. 2) Guest Blogging في مواقع متخصصة. 3) Link Outreach: إرسال طلبات للحصول على روابط. 4) مشاركة المحتوى في المنتديات والمجتمعات. 5) نشر المحتوى على وسائل التواصل. 6) إضافة الموقع في أدلة المواقع. عوامل تقييم Backlinks (Google): - Domain Authority للموقع الرابط - نوع الرابط (Dofollow vs Nofollow) - تكرار الروابط من نفس الموقع - موضع الرابط في الصفحة - صلة الموضوع (Relevance) - Anchor Text المستخدم - عدد الروابط في الصفحة - عمر الموقع الرابط تحذير: تجنب Toxic Links وLink Schemes.'
+  },
+  {
+    id: 34, category: 'seo', isNew: true,
+    q: 'كيف تعمل محركات البحث وكيف تتفاعل مع المستخدم؟',
+    a: 'محركات البحث تمر بـ 4 مراحل: 1) الزحف (Crawling): عناكب البحث (Spiders/Bots) تتصفح الويب عبر الروابط. 2) الفهرسة (Indexing): تحليل وتخزين المحتوى في قواعد البيانات. 3) المعالجة: فهم المحتوى عبر خوارزميات مثل BERT. 4) عرض النتائج: الترتيب بناءً على عوامل متعددة. تفاعل المستخدم مع نتائج البحث: - تحليل SERP (صفحة النتائج) - تحليل الخوارزمية - تحليل الروابط - تحليل المحتوى النصي - تحليل العناوين - تحليل البيانات الوصفية - تحليل العناصر غير النصية - Technical SEO - Local SEO - Off-Page SEO النتيجة: Success في الظهور بالمركز الأول.'
+  },
+  {
+    id: 35, category: 'seo', isNew: true,
+    q: 'ما الفرق بين Dofollow و Nofollow؟',
+    a: 'Dofollow: رابط يمرر "Link Juice" (سلطة SEO) للموقع المرتبط، يُحتسب في ترتيب Google. Nofollow: رابط لا يمرر سلطة، يُخبر Google بتجاهل الرابط لأغراض الترتيب. متى تستخدم Nofollow: - روابط الإعلانات المدفوعة - تعليقات المدونات - User-generated content - روابط غير موثوقة - روابط مدفوعة (حسب سياسة Google) متى تستخدم Dofollow: - روابط لمحتوى تثق به - شراكات حقيقية - Guest posts عالية الجودة - إشارات مرجعية لمصادر موثوقة القاعدة: التنوع الطبيعي في الروابط (85% Dofollow، 15% Nofollow تقريباً).'
+  },
+
+  // ====== أسئلة Branding الجديدة ======
+  {
+    id: 36, category: 'branding', isNew: true,
+    q: 'ما هي العلامة التجارية (Branding) وما عناصرها؟',
+    a: 'Branding = الصورة الذهنية والانطباع الذي يتكون لدى الناس عن شركة أو منتج أو شخص. بعبارة أخرى: كل ما يشعر به الناس عندما يسمعون اسم شركتك أو يرون شعارها. عناصر Branding الأساسية: 1) الاسم (Name): 7 أنواع (وصفية، رمزية، مخترعة، مختصرة، مركبة، جغرافية، مؤسسية). 2) الشعار (Logo): رمز بصري يمثل الهوية (نصي، حرفي، رمزي، مركب). 3) الألوان (Colors): Primary, Secondary, Accent - كل لون يحمل معنى نفسي. 4) صوت العلامة (Brand Voice): أسلوب التواصل (Nike: قوي، Instagram: عفوي، Apple: راقٍ). 5) الرسالة (Mission): سبب وجود الشركة. 6) الرؤية (Vision): المستقبل الذي تسعى له. 7) القيم (Values): المبادئ الأخلاقية والمهنية. "إذا لم تكن العلامة التجارية قوية، فسعر المنتج هو العامل الوحيد، والعلامة هي العنصر الوحيد القليل!" - فيليب كوتلر'
+  },
+  {
+    id: 37, category: 'branding', isNew: true,
+    q: 'ما الفرق بين Mission و Vision و Values؟',
+    a: '1) Mission (الرسالة): بيان قصير يوضح السبب الأساسي لوجود الشركة، ماذا تفعل، لمن، وكيف. مثال: Google: "تنظيم معلومات العالم وجعلها متاحة للجميع". 2) Vision (الرؤية): بيان قصير يصف المستقبل الذي تسعى الشركة لتحقيقه على المدى الطويل. مثال: Tesla: "أن نكون شركة السيارات الأكثر إقحاماً في القرن الـ21 عبر الانتقال للعالم الكهربائي". 3) Values (القيم): مجموعة المبادئ الأخلاقية والمهنية التي توجه قرارات وسلوك الشركة. أمثلة: الشفافة، الاستدامة، الابتكار، الجودة. مثال: Apple: التفكير خارج الصندوق، البساطة في التصميم، السرية على الأفكار. الفرق: Mission = الحاضر (ماذا نفعل الآن)، Vision = المستقبل (إلى أين نذهب)، Values = المبادئ (كيف نتصرف).'
+  },
+  {
+    id: 38, category: 'branding', isNew: true,
+    q: 'ما هو Brand Voice وكيف تحدده؟',
+    a: 'Brand Voice = الطريقة والأسلوب الذي تتحدث به العلامة التجارية مع جمهورها. أمثلة: - Nike: "قوي، تحفيزي، بطل" (Just Do It) - Instagram: "مشرق، بسيط، ودود" (شارك لحظاتك) - Apple: "راقي، بسيط، مبتكر" (Think Different) خطوات تحديد Brand Voice: 1) حدد شخصية علامتك التجارية (إذا كانت شخصاً، كيف ستكون؟). 2) اختر 3-5 صفات رئيسية لصوتك. 3) ضع قواعد للغة المستخدمة (رسمية/عامية، طول الجمل، الممنوعات). 4) طبق الصوت على كل النصوص (موقع، سوشيال، إعلانات، إيميلات). الأهمية: الصوت الموحد = هوية قوية = ولاء أكبر = تميز عن المنافسين.'
+  },
+  {
+    id: 39, category: 'branding', isNew: true,
+    q: 'ما هي الرسالة التسويقية الفعالة وما صفاتها؟',
+    a: 'الرسالة التسويقية الفعالة = الفكرة الأساسية التي تريد أن تزرعها في عقل العميل عن المنتج/العلامة. الرسالة الفعالة غير فعالة: "نقدم أفضل جودة في السوق" ← فعالة: "منتجنا يوصل لبابك في أقل من 20 دقيقة". صفات الرسالة الفعالة: 1) واضحة: يفهمها أي شخص. 2) موجهة لجمهور محدد. 3) بسيطة ومباشرة. 4) تحتوي CTA (دعوة للعمل). 5) مرتبطة بحاجة حقيقية. 6) محددة وقابلة للتصديق. 7) فريدة: تميزك عن المنافسين. عناصر الرسالة: - الجمهور المستهدف - الحاجة/المشكلة - الفائدة/الحل - USP (العرض الفريد) - النبرة (Tone) - CTA'
+  },
+  {
+    id: 40, category: 'branding', isNew: true,
+    q: 'اشرح نموذج AIDA في كتابة الرسائل التسويقية',
+    a: 'AIDA = Attention, Interest, Desire, Action - نموذج كلاسيكي لكتابة رسائل تسويقية مقنعة. 1) Attention (الانتباه): جذب الانتباه بصورة قوية أو عنوان. 2) Interest (الاهتمام): ذكر مشكلة يعيها العميل. 3) Desire (الرغبة): تحويل الاهتمام لرغبة عبر التركيز على الفوائد. 4) Action (الإجراء): دعوة واضحة لاتخاذ إجراء (اشترِ، سجّل، جرّب). مثال تطبيقي: - Attention: "هل تعاني من انخفاض المبيعات؟" - Interest: "80% من المتاجر الإلكترونية تفقد عملاء بسبب تجربة مستخدم سيئة!" - Desire: "حلنا يساعدك في زيادة المبيعات بنسبة 150%" - Action: "جرّب النسخة التجريبية مجاناً اليوم!" الاستخدام الأمثل: إعلانات وسائل التواصل، Landing Pages، Email Campaigns.'
+  },
+  {
+    id: 41, category: 'branding', isNew: true,
+    q: 'ما هو نموذج PAS ومتى تستخدمه؟',
+    a: 'PAS = Problem, Agitate, Solution - نموذج يركز على مشكلة العميل ويهيجها ثم يقدم الحل. 1) Problem (المشكلة): اذكر مشكلة يواجهها العميل. 2) Agitate (التحريض): عمّق ألم المشكلة نفسياً. 3) Solution (الحل): قدم منتجك/خدمتك كحل. مثال: - Problem: "التسويق التقليدي لم يعد فعالاً" - Agitate: "يومياً بدون استخدام التسويق الرقمي، تخسر آلاف العملاء المحتملين!" - Solution: "نظامنا التسويقي يصل للعميل المناسب في الوقت المناسب". الاستخدام الأمثل: - منتجات تحل مشكلة واضحة - PAS/BAB: منتجات تحل مشكلة واضحة - FAB: المنتجات/الخدمات المعقدة أو التقنية - 4Ps: عروض وتخفيضات - 4 U\'s: العروض والمنتجات - PPPP: الخدمات، المنتجات الفاخرة، طويلة المدة'
+  },
+  {
+    id: 42, category: 'branding', isNew: true,
+    q: 'اشرح نموذج BAB في كتابة الرسائل',
+    a: 'BAB = Before-After-Bridge - نموذج يُظهر التحول الذي سيحدثه منتجك. 1) Before (قبل): صف الوضع الحالي السيء للعميل. 2) After (بعد): صف الوضع الجيد بعد استخدام المنتج. 3) Bridge (الجسر): كيف يصل العميل من "قبل" إلى "بعد" عبر منتجك. مثال: - Before: "هل تعاني من إدارة المشاريع يدوياً؟" - After: "تعمل بكفاءة مع قرارات يومية واضحة" - Bridge: "برنامجنا يوفر لك كل ذلك". مثال آخر (Star): - Situation: "أحمد يعاني من السمنة" - Task: "خسارة 10 كيلوجرامات" - Action: "قدمنا له خطة تدريب وحمية" - Result: "خسر 12 كيلوجرام في 4 أسابيع". الاستخدام الأمثل: خدمات استشارية، برامج تدريب، منتجات تحول حياة المستخدم.'
+  },
+  {
+    id: 43, category: 'branding', isNew: true,
+    q: 'ما هو نموذج FAB ومتى تستخدمه؟',
+    a: 'FAB = Features, Advantages, Benefits - نموذج مثالي للمنتجات التقنية والمعقدة. 1) Features (المزايا): الخصائص التقنية للمنتج. 2) Advantages (الخصائص): كيف يميزك عن المنافسين. 3) Benefits (الفوائد): كيف يحسن حياة العميل. مثال: - Feature: "بطارية تدوم 20 ساعة" - Advantage: "أسرع 5 مرات في الشحن" - Benefit: "استمتع يومك كاملاً بدون انقطاع" مثال آخر: - Feature: "تصميم مقاوم للماء" - Advantage: "مناسب للاستخدام في جميع الظروف" - Benefit: "راحة البال في أي مكان". الاستخدام الأمثل: المنتجات/الخدمات التقنية والمعقدة، B2B، عندما يحتاج العميل فهم التفاصيل التقنية أولاً.'
+  },
+
+  // ====== أسئلة Consumer Behavior الجديدة ======
+  {
+    id: 44, category: 'consumer', isNew: true,
+    q: 'ما هو سلوك المستهلك وما العوامل المؤثرة فيه؟',
+    a: 'سلوك المستهلك = دراسة كيف يتخذ الأفراد قرارات الشراء. العوامل المؤثرة: 1) العوامل الشخصية: العمر، الجنس، الدخل، التعليم، نمط الحياة. 2) العوامل النفسية: الدوافع (الرغبة في التميز، الخوف)، الإدراك، المعتقدات والقيم. 3) العوامل الاجتماعية: العائلة، الأصدقاء، الطبقة الاجتماعية. 4) العوامل الثقافية: الثقافة الواسعة (الدين، التقاليد)، الثقافة الفرعية. 5) العوامل الاقتصادية: الظروف المالية (الادخار، الإنفاق). نماذج اتخاذ قرار الشراء: - النموذج الروتيني: شراء يومي متكرر (المنتجات الأساسية) - النموذج الاندفاعي: قرار سريع بناءً على عاطفة أو إغراء بصري - النموذج التقليدي: بحث ومقارنة بين البدائل قبل الشراء'
+  },
+  {
+    id: 45, category: 'consumer', isNew: true,
+    q: 'ما هي مراحل اتخاذ قرار الشراء لدى المستهلك؟',
+    a: '5 مراحل لقرار الشراء: 1) الشعور بالحاجة أو المشكلة: العميل يدرك حاجة غير مُشبعة. 2) البحث عن المعلومات: يبحث عن حلول (داخلي: ذاكرته، خارجي: جوجل، أصدقاء). 3) تقييم البدائل: يقارن بين الخيارات المتاحة. 4) اتخاذ قرار الشراء: يختار ويشتري. 5) سلوك ما بعد الشراء: رضا أو ندم، يقرر التكرار أو التوصية. 3 نماذج سلوكية: 1) النموذج الروتيني: شراء يومي متكرر بناءً على العادة أو الولاء السابق (Apple, Coca-Cola). 2) النموذج الاندفاعي: قرار سريع بناءً على عاطفة أو إغراء بصري (السوشيال ميديا). 3) النموذج التقليدي: بحث ومقارنة بين البدائل (سيارات، عقارات).'
+  },
+  {
+    id: 46, category: 'consumer', isNew: true,
+    q: 'كيف تؤثر الإغراءات التسويقية على قرارات المستهلك؟',
+    a: 'المستهلك العقلاني vs العاطفي: العقلاني يبحث عن: الميزات والأداء، القيمة مقابل المال، الحاجة الوظيفية. العاطفي يبحث عن: الانتماء والامتلاك، المكانة الاجتماعية، الخوف من فقدان الفرصة (FOMO)، الثقة والأمان. استراتيجيات التأثير: 1) الإغراءات العقلانية: خصومات، عروض محدودة، ضمانات. 2) الإغراءات العاطفية: قصص ملهمة، مؤثرين، صور جذابة. أمثلة على علامات تجارية ناجحة: - Apple: تبيع الابتكار والتميز (Think Different) - Volvo: تبيع الأمان والحماية - Starbucks: تبيع تجربة فاخرة (القهوة على كوب أكبر) - Nike: تبيع التحفيز والنجاح (Just Do It) المفتاح: فهم جمهورك واستخدم الإغراء المناسب.'
+  },
+  {
+    id: 47, category: 'consumer', isNew: true,
+    q: 'ما هو سلوك المستهلك في العالم الرقمي؟',
+    a: 'خصائص المستهلك الرقمي: 1) الاعتماد على المعلومات الرقمية: يبحث أولاً على Google قبل الشراء. 2) الشراء المباشر والسريع: يتأثر بالإعلانات المستهدفة. 3) المقارنة السريعة بين البدائل: يقارن أسعار وتقييمات في دقائق. 4) التفاعل مع العلامات التجارية: يتابع ويتفاعل مع المحتوى. 5) الوعي العالي بحقوقه: يقرأ شروط الخدمة، يحمي بياناته. تأثير العالم الرقمي: - سرعة اتخاذ القرار - قوة التقييمات والمراجعات - تأثير Influencers - توقع تجربة مستخدم ممتازة - شفافية الأسعار والمعلومات التحدي: كيفية جذب انتباه مستخدم يتعرض لآلاف الرسائل يومياً.'
+  },
+
+  // ====== أسئلة Content & Storytelling الجديدة ======
+  {
+    id: 48, category: 'content', isNew: true,
+    q: 'ما هي استراتيجيات إنشاء المحتوى للأنشطة التجارية؟',
+    a: 'مراحل صناعة المحتوى: 1) تحديد الهدف: زيادة الوعي، تحديد العملاء، تمييز العلامة، بناء الولاء. 2) تحديد الفئة المستهدفة: جغرافياً، ديموغرافياً، سلوكياً. 3) التخطيط للمحتوى: تقويم شهري، أنواع المحتوى، القنوات. 4) كتابة وتصميم وإخراج المحتوى. أنواع المحتوى: 1) محتوى توعوي (Educational): يركز على تعليم العميل. 2) محتوى ترفيهي (Entertaining): يركز على التسلية. 3) محتوى ترويجي (Promotional): يركز على البيع. أنواع نقاط الألم لدى العميل: - مالي (خوف من خسارة المال) - إنتاجية وكفاءة - دعم فني - اجتماعي (المكانة الاجتماعية) - صحي - نفسي (الخوف، القلق) - جودة (المنتج/الخدمة) - عناء (تعقيد الاستخدام) القاعدة: المحتوى القيم يصل ويحصل على تفاعل أكثر من المحتوى الترويجي.'
+  },
+  {
+    id: 49, category: 'content', isNew: true,
+    q: 'ما هو Storytelling ولماذا نلجأ إليه في المحتوى؟',
+    a: 'Storytelling (فن سرد القصص) = نقل الرسائل أو المعلومات من خلال درس قصة يُكوّن ارتباطاً عاطفياً أو إنسانياً مع المتلقي. لماذا نلجأ إليه؟ 1) يبقي المعلومة في ذهن المتلقي. 2) يبسط المعلومات المعقدة. 3) يعزز قوة العلامة التجارية. 4) يحسن التحويلات (Conversions). 5) يميزك عن المنافسين. عناصر القصة الجيدة: 1) ربط العميل بالبطل (المنتج هو البطل وليس العميل). 2) المشكلة أو التحدي الذي يواجهه. 3) كيف اكتشف الحل (منتجك/خدمتك). 4) العواطف التي واجهها أثناء التحول. 5) النتيجة الإيجابية التي أوصلته للحل. 6) CTA: ما الذي تريده من القارئ (شراء، تجربة، مشاركة). مثال: "كان أحمد يعاني من السمنة، بدأ برنامجاً رياضياً وحمية، بعد 12 أسبوعاً خسر 12 كيلوجراماً!"'
+  },
+  {
+    id: 50, category: 'content', isNew: true,
+    q: 'كيف تكتب قصة تسويقية فعالة؟',
+    a: 'خطوات كتابة قصة تسويقية: 1) حدد المنتج/الخدمة: مثال "ترتيب كريم للبشرة الحساسة". 2) حدد المكونات: "طبيعي 100%". 3) حدد المزايا: "مناسب للبشرة الحساسة". 4) حدد النتائج: "خلال 48 ساعة". 5) حدد السعر: "45 ريال". 6) استخدم العناصر الأساسية: - البطل (العميل) - المشكلة (البشرة الحساسة) - الحل (المنتج) - التحول (البشرة الصحية) - النتيجة (الثقة) مثال قصة: "سارة كانت تعاني من بشرة حساسة، جربت منتجات كثيرة بدون فائدة. اكتشفت ترتيب كريم، بعد 48 ساعة لاحظت فرقاً. الآن بثقة تخرج بدون مكياج!" القاعدة الذهبية: اجعل العميل هو البطل، منتجك هو الأداة التي تساعده.'
+  },
+
+  // ====== أسئلة Digital Marketing الجديدة ======
+  {
+    id: 51, category: 'technical', isNew: true,
+    q: 'ما الفرق بين التسويق التقليدي والرقمي؟',
+    a: 'التسويق التقليدي: يركز على المنتج، يحتاج وقت وميزانية كبيرة، قياس النتائج صعب، وصول محدود، اتصال أصعب بالعملاء، عمر قصير. الأنشطة: الإعلانات التلفزيونية، الراديو، الصحف، اللوحات الإعلانية. التسويق الرقمي: يركز على احتياجات العميل، تكلفة أقل، سهولة الوصول، نتائج أسرع، قياس الأداء سهل، اتصال مباشر بالعملاء، عمر طويل. بدأ مع Jeff Bezos (مؤسس Amazon). مكونات النظام التسويقي الرقمي: 1) Owned Media: قنوات تملكها (موقع، مدونة، سوشيال). 2) Paid Media: إعلانات مدفوعة (Google Ads, Meta Ads). 3) Earned Media: ما يكسبه بشكل طبيعي (مراجعات، مشاركات، PR). التحديات الرئيسية: الذكاء الاصطناعي، الفيديو القصير، البريد الإلكتروني.'
+  },
+  {
+    id: 52, category: 'technical', isNew: true,
+    q: 'ما هي مكونات النظام التسويقي الرقمي؟',
+    a: 'النظام التسويقي الرقمي يتكون من 3 أقسام رئيسية تتفاعل معاً: 1) Owned Media (المملوكة): - إنشاء المحتوى، إدارة المحتوى - وسائل التواصل الاجتماعي - محركات البحث (SEO) - البريد الإلكتروني - تطبيقات الهاتف - المتاجر الإلكترونية 2) Paid Media (المدفوعة): - الإعلانات المدفوعة (Google Ads, Meta Ads) - التسويق عبر المؤثرين - التسويق بالمحتوى المدفوع 3) Earned Media (المكتسبة): - التقييمات والمراجعات - المشاركات العضوية - العلاقات العامة - Word of Mouth الأدوات: WordPress, Buffer, Meta Business Suite, Google Analytics, Mailchimp, Ahrefs, YouTube, TikTok, Canva. التفاعل: Owned تبني الأساس، Paid تسرع الوصول، Earned تعزز المصداقية.'
+  },
+
+  // ====== أسئلة Prompt Engineering الجديدة ======
+  {
+    id: 53, category: 'technical', isNew: true,
+    q: 'ما هي هندسة الأوامر (Prompt Engineering) في الذكاء الاصطناعي؟',
+    a: 'Prompt Engineering = فن كتابة أوامر فعالة لنماذج الذكاء الاصطناعي للحصول على أفضل النتائج. كيف تعمل نماذج AI: 1) توزيع الاحتمالات مع فهم السياق. 2) حساب الاحتمالات. 3) ضبط معامل الحرارة (Temperature) والاختيار. كيف يتم التنبؤ: - إذا كانت Temperature عالية: النموذج يختار الكلمة الأقرب من الصفر (إبداع أكثر). - إذا كانت Temperature منخفضة: النموذج يختار الكلمة المنفردة الأقرب (دقة أكثر). تقنيات متقدمة: 1) Chain of Thought (سلسلة الأفكار): تقسيم المشكلة لخطوات. 2) Role-based (تقنية الدور): تحديد دور محدد للنموذج. 3) Few-shot (تقنية الأمثلة): تقديم أمثلة متعددة. 4) Zero-shot (التقنية الصفري): بدون أمثلة. نصائح: - حدد الهدف بوضوح - استخدم سياق (Context) - اطلب التفاصيل - استخدم الأمثلة'
+  },
+  {
+    id: 54, category: 'technical', isNew: true,
+    q: 'ما هو Weighted Attractiveness Index وكيف تستخدمه؟',
+    a: 'Weighted Attractiveness Index (مؤشر الجاذبية الموزون) = أداة استراتيجية تُستخدم لتقييم وجاذبية الأسواق مقارنة بعضها ببعض، واتخاذ قرارات دخول سوق جديد أو توسع. خطوات الحساب: 1) حدد 4-5 عوامل مهمة (حجم السوق، معدل النمو، شدة المنافسة، سهولة الدخول). 2) امنح كل عامل وزناً نسبياً (مجموع 100%). 3) قيّم كل سوق من 1 إلى 5 (1=سيء جداً، 5=ممتاز). 4) اضرب التقييم بالوزن واجمع النتائج. مثال: - حجم السوق (وزن 30%) × 4 = 120 - معدل النمو (وزن 25%) × 5 = 125 - شدة المنافسة (وزن 25%) × 2 = 50 - سهولة الدخول (وزن 20%) × 3 = 60 - المجموع = 355 النتيجة: السوق ذو المؤشر الأعلى هو الأكثر جاذبية للاستثمار.'
+  }
+];
+
+const scenarios = [
+  {
+    title: 'سيناريو: شركة ناشئة بميزانية محدودة',
+    icon: 'fa-seedling',
+    color: 'green',
+    situation: 'شركة SaaS ناشئة، ميزانية 5000$/شهر، 3 موظفين، منتج B2B.',
+    challenge: 'كيف تبني استراتيجية تسويق من الصفر؟',
+    solution: 'المرحلة 1 (شهر 1-3): - Buyer Persona دقيق جداً (NICHE) - Content Marketing (SEO طويل الأمد) - LinkedIn Outreach مجاني - Product Hunt Launch المرحلة 2 (شهر 4-6): - Google Ads بكلمات Long-tail - Case Studies من عملاء أوائل - Referral Program المرحلة 3 (شهر 7-12): - Scaling ما نجح - Hiring أول Marketer - Expansion لـ Channels جديدة KPIs: MQLs, Demo Requests, CAC < 300$'
+  },
+  {
+    title: 'سيناريو: أزمة سمعة على السوشيال ميديا',
+    icon: 'fa-fire',
+    color: 'red',
+    situation: 'شكوى فيروسية من عميل، 10K مشاركة، هاشتاغ سلبي ترند.',
+    challenge: 'كيف تتعامل مع الأزمة؟',
+    solution: '1) الساعات الأولى (0-4): - لا تحذف، لا تتجاهل - تواصل خاص مع المشتكي - اعتذار صادق وواضح - وقف الحملات المدفوعة مؤقتاً 2) اليوم الأول: - بيان رسمي شفاف - خطة تعويض للمتضررين - فتح قناة تواصل مباشرة 3) الأسبوع الأول: - متابعة يومية - حل جذري للمشكلة - تحديثات منتظمة 4) ما بعد الأزمة: - Post-Mortem - تحسين المنتج/الخدمة - حملة استعادة الثقة'
+  },
+  {
+    title: 'سيناريو: منتج جديد في سوق مشبع',
+    icon: 'fa-box-open',
+    color: 'purple',
+    situation: 'إطلاق تطبيق توصيل طعام في سوق به 10 منافسين كبار.',
+    challenge: 'كيف تنجح بدون ميزانية ضخمة؟',
+    solution: 'استراتيجية Blue Ocean: 1) Eliminate: إلغاء ميزات غير أساسية (تقليل التكلفة) 2) Reduce: تقليل وقت التوصيل فقط 3) Raise: رفع جودة المطاعم (مختارة بعناية) 4) Create: ميزة فريدة = "طبخ منزلي صحي" Targeting: شريحة محددة = "صحي +Busy professionals" Positioning: "ليس توصيل طعام، بل صحة تُوصَل لبابك" Launch: - Influencers في مجال الصحة - Partnerships مع Gyms - Content عن التغذية'
+  },
+  {
+    title: 'سيناريو: انخفاض مفاجئ في المبيعات',
+    icon: 'fa-chart-line',
+    color: 'yellow',
+    situation: 'مبيعات انخفضت 40% خلال أسبوع بدون سبب واضح.',
+    challenge: 'كيف تشخص المشكلة وتحلها؟',
+    solution: 'Diagnosis Framework: 1) Data Analysis: - أي مرحلة Funnel تأثرت؟ - أي Channel انخفض؟ - أي Segment تأثر؟ 2) External Factors: - منافس جديد؟ - تغيير خوارزمية؟ - موسمية؟ - أزمة اقتصادية؟ 3) Internal Factors: - تغيير في الموقع؟ - مشكلة تقنية؟ - نفاد مخزون؟ 4) Customer Feedback: - Stopped buying why؟ - Switched to whom؟ 5) Action Plan: - Quick wins (إصلاح تقني) - Medium term (تحسين offer) - Long term (استراتيجية جديدة)'
+  },
+  {
+    title: 'سيناريو: ميزانية ضخمة بدون نتائج',
+    icon: 'fa-money-bill-wave',
+    color: 'red',
+    situation: 'ميزانية 50K$/شهر، ROAS = 0.8، الإدارة تضغط.',
+    challenge: 'كيف تعكس الوضع؟',
+    solution: 'Emergency Protocol: 1) Stop the bleeding: - إيقاف جميع الحملات غير الربحية - تحليل آخر 30 يوم 2) Root Cause Analysis: - Audience خاطئ؟ - Creative سيء؟ - Landing Page مشكلة؟ - Offer غير جذاب؟ 3) Rebuild: - Hypothesis جديد - Test صغير (5K$) - Scale ما نجح فقط 4) Communication: - اجتماع شفاف مع الإدارة - خطة 30-60-90 يوم - KPIs واقعية جديدة 5) Execution: - A/B Testing مكثف - Optimization يومية - Reporting أسبوعي'
+  },
+  {
+    title: 'سيناريو: منافس يقلد كل شيء',
+    icon: 'fa-copy',
+    color: 'orange',
+    situation: 'منافس ينسخ إعلاناتك، أسعارك، حتى محتوى موقعك.',
+    challenge: 'كيف تحمي نفسك وتتفوق؟',
+    solution: 'استراتيجية متعددة: 1) Legal Protection: - Trademark للعلامة - Copyright للمحتوى - Cease & Desist إذا لزم 2) Innovation: - كن دائماً خطوة للأمام - أطلق ميزات جديدة باستمرار - Speed of Execution 3) Brand Building: - قصة فريدة لا تُنسخ - Community قوي - Customer Experience استثنائية 4) Competitive Advantage: - VRIO Analysis - ركز على ما لا يستطيع تقليده - Data, Team, Culture 5) Pricing Strategy: - لا تدخل حرب أسعار - ارفع القيمة المدركة'
+  },
+  {
+    title: 'سيناريو: فريق غير متعاون',
+    icon: 'fa-users',
+    color: 'blue',
+    situation: 'فريق المبيعات لا يتابع Leads التسويق، Design متأخر دائماً.',
+    challenge: 'كيف تبني تعاون فعال؟',
+    solution: 'Smarketing Strategy (Sales + Marketing): 1) Alignment: - SLA واضح: Marketing يقدم X leads/شهر - Sales يتابع خلال 24 ساعة - Definition مشتركة لـ MQL/SQL 2) Communication: - Weekly Sync Meeting - Shared Dashboard - Slack Channel مشترك 3) Process: - CRM موحد - Automated Lead Routing - Feedback Loop 4) Incentives: - KPIs مشتركة - Shared Bonuses - Recognition 5) Culture: - Team Building - Joint Wins Celebration - Blame-free Post-Mortems'
+  },
+  {
+    title: 'سيناريو: دخول سوق دولي',
+    icon: 'fa-globe',
+    color: 'indigo',
+    situation: 'شركة ناجحة محلياً تريد التوسع لـ 3 دول جديدة.',
+    challenge: 'كيف تبني استراتيجية دخول؟',
+    solution: 'Market Entry Framework: 1) Market Research: - PESTEL لكل دولة - TAM/SAM/SOM - Porter\'s 5 Forces - Cultural Analysis 2) Prioritization Matrix: - حجم السوق - سهولة الدخول - منافسة - Cultural Fit 3) Entry Strategy: - Export مباشر؟ - Partnership؟ - Local Entity؟ - Franchise؟ 4) Localization: - Language - Cultural Adaptation - Payment Methods - Legal Compliance 5) Pilot: - دولة واحدة أولاً - Learn & Iterate - ثم Scale'
+  },
+  {
+    title: 'سيناريو: منتج يفشل بعد إطلاقه',
+    icon: 'fa-times-circle',
+    color: 'red',
+    situation: 'استثمرنا 200K$ في منتج، بعد 3 أشهر: 50 عميل فقط.',
+    challenge: 'ماذا تفعل: تستمر أم تتوقف؟',
+    solution: 'Decision Framework: 1) Data Analysis: - Why aren\'t they buying؟ - Product-Market Fit؟ - Pricing؟ - Distribution؟ 2) Customer Interviews: - 20+ مقابلة مع non-buyers - 10 مع current customers - Pattern Recognition 3) Pivot Options: - Pivot Product (تغيير الميزات) - Pivot Customer (شريحة مختلفة) - Pivot Channel (قناة جديدة) - Pivot Business Model 4) Decision Matrix: - Runway المتبقي - Market Signal - Team Capability - Passion 5) Execute: - Kill fast or Pivot fast - Sunk Cost Fallacy تحذير'
+  },
+  {
+    title: 'سيناريو: عميل VIP يهدد بالرحيل',
+    icon: 'fa-user-tie',
+    color: 'yellow',
+    situation: 'عميل يمثل 30% من الإيرادات غير راضٍ وينافس يطارده.',
+    challenge: 'كيف تحافظ عليه؟',
+    solution: 'Retention Strategy: 1) Immediate Action (24h): - اتصال شخصي من CEO - استماع فعال بدون دفاع - اعتذار صادق 2) Understanding: - Root Cause Analysis - What went wrong؟ - What they really want؟ 3) Solution: - Custom solution - Dedicated Account Manager - Priority Support - Special Pricing 4) Relationship: - Quarterly Business Reviews - Exclusive Access - Co-creation Opportunities 5) Prevention: - Early Warning System - Proactive Check-ins - Customer Success Team'
+  },
+  // ====== سيناريوهات جديدة ======
+  {
+    title: 'سيناريو: بناء علامة تجارية من الصفر',
+    icon: 'fa-palette',
+    color: 'pink',
+    isNew: true,
+    situation: 'شركة جديدة تريد بناء Brand قوي في سوق مزدحم، الميزانية 20K$ لأول 6 أشهر.',
+    challenge: 'كيف تبني Brand Identity و Brand Voice ورسالة تسويقية فعالة؟',
+    solution: 'المرحلة 1 (الشهر 1): - أبحاث السوق والمنافسين - تحديد Buyer Persona - تحديد Mission, Vision, Values - اختيار اسم مميز (7 أنواع: وصفية، رمزية، مخترعة...) - تصميم Logo (نصي، حرفي، رمزي، مركب) - اختيار Color Palette (Primary, Secondary, Accent) المرحلة 2 (الشهر 2): - تحديد Brand Voice (3-5 صفات) - كتابة Brand Guidelines - صياغة الرسالة التسويقية الفعالة - تطبيق AIDA/PAS/FAB للرسائل المرحلة 3 (الشهر 3-6): - إطلاق الموقع والسوشيال - Storytelling Campaign - Content Marketing (توعوي + ترفيهي + ترويجي) - Influencer Partnerships - قياس Brand Awareness (Reach, Mentions, Sentiment) KPIs: Brand Recall, NPS, Social Mentions, Share of Voice'
+  },
+  {
+    title: 'سيناريو: موقع يتصدر SEO بعد 6 أشهر',
+    icon: 'fa-search',
+    color: 'emerald',
+    isNew: true,
+    situation: 'موقع تجاري جديد، Traffic 100 زائر/يوم، الهدف 10,000 زائر/يوم خلال 6 أشهر.',
+    challenge: 'كيف تبني استراتيجية SEO شاملة؟',
+    solution: 'الشهر 1-2 (Technical SEO): - تدقيق تقني كامل (Site Speed, Mobile, HTTPS) - XML Sitemap + Robots.txt - Schema Markup - إصلاح 404 وRedirects الشهر 3-4 (On-Page SEO): - Keyword Research (Long-tail) - تحسين كل صفحة (Title, Meta, H1-H6, Alt) - إنشاء 50+ مقالة SEO (1000+ كلمة) - Internal Linking Strategy الشهر 5-6 (Off-Page SEO): - Guest Blogging (10 مقالات/شهر) - Link Outreach - Social Signals - Local SEO (Google My Business) الأدوات: Google Analytics, Search Console, Ahrefs, Clarity KPIs: Organic Traffic, Keyword Rankings, Domain Authority, Backlinks'
+  },
+  {
+    title: 'سيناريو: حملة محتوى فاشلة',
+    icon: 'fa-file-alt',
+    color: 'orange',
+    isNew: true,
+    situation: 'استثمرنا 15K$ في Content Marketing لمدة 3 أشهر، Engagement ضعيف، لا Leads.',
+    challenge: 'كيف تشخص المشكلة وتعيد بناء استراتيجية المحتوى؟',
+    solution: '1) تشخيص المشكلة: - تحليل الأداء لكل قطعة محتوى - مراجعة Buyer Persona (هل استهدفنا الشريحة الصحيحة؟) - تحليل Pain Points (هل عالجنا النقاط الصحيحة؟) - مراجعة القنوات (هل اخترنا القنوات المناسبة؟) 2) الأسباب المحتملة: - محتوى ترويجي أكثر من اللازم - لا قيمة مضافة للعميل - لا Storytelling - لا CTA واضح - توقيت خاطئ 3) إعادة البناء: - قاعدة 80/20 (80% قيمة، 20% ترويج) - تنويع: توعوي + ترفيهي + ترويجي - تطبيق AIDA/PAS/BAB - استخدام Storytelling - A/B Testing للعناوين والـ Creative 4) التنفيذ الجديد: - Content Calendar شهري - KPIs واضحة (Engagement, Leads, Shares) - مراجعة أسبوعية'
+  },
+  {
+    title: 'سيناريو: منافس يستخدم Black Hat SEO',
+    icon: 'fa-user-secret',
+    color: 'gray',
+    isNew: true,
+    situation: 'منافس يستخدم تكتيكات SEO غير أخلاقية (Spam Links, Keyword Stuffing) وتصدر نتائج البحث.',
+    challenge: 'كيف تتعامل مع الموقف بدون الدخول في حرب SEO غير أخلاقية؟',
+    solution: '1) لا تنزلق لمستواهم: - Black Hat SEO عقابها من Google (Penalty) - السمعة أهم من الترتيب المؤقت 2) وثّق المخالفات: - Screenshots للأدلة - تقارير Spam من Google Search Console - Disavow Tool للروابط السامة 3) ركز على White Hat: - محتوى أفضل بكثير - UX ممتاز - Backlinks طبيعية - E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) 4) استغل الموقف: - أبلغ Google عن المخالفات - استخدم PR لإبراز نزاهتك - ابنِ ثقة طويلة الأمد 5) الاستراتيجية طويلة المدى: - White Hat يفوز دائماً على المدى الطويل - Google تحدث خوارزمياتها باستمرار - المنافسون Black Hat سيُعاقبون'
+  },
+  {
+    title: 'سيناريو: إطلاق منتج مع Storytelling',
+    icon: 'fa-book-open',
+    color: 'violet',
+    isNew: true,
+    situation: 'شركة تطلق منتج عناية بالبشرة طبيعي 100%، السعر 45 ريال، النتيجة خلال 48 ساعة.',
+    challenge: 'كيف تبني حملة إطلاق تعتمد على Storytelling؟',
+    solution: '1) بناء القصة الأساسية: - البطل: سارة، 28 سنة، تعاني بشرة حساسة - المشكلة: جربت منتجات كثيرة بدون فائدة - التحدي: فقدان الثقة بنفسها - الحل: اكتشفت منتجك - التحول: بشرة صحية في 48 ساعة - النتيجة: ثقة عالية، تخرج بدون مكياج 2) تطبيق عناصر القصة: - ربط العميل بالبطل - إظهار المشكلة بوضوح - كشف الحل تدريجياً - إظهار العواطف - النتيجة الإيجابية - CTA واضح 3) قنوات النشر: - فيديو على Instagram/TikTok - Carousel على Instagram - Blog Post مفصل - Email Campaign - Influencer Stories 4) KPIs: Engagement Rate, Shares, Conversion Rate, UGC (User Generated Content)'
+  }
+];
+
+const quizQuestions = [
+  {
+    q: 'ما هو الهدف الرئيسي من تحليل PESTEL؟',
+    options: ['تحليل المنافسين المباشرين', 'تحليل البيئة الخارجية الكلية', 'تحليل نقاط القوة الداخلية', 'تحليل سلوك المستهلك'],
+    correct: 1,
+    explanation: 'PESTEL يحلل البيئة الخارجية: Political, Economic, Social, Technological, Environmental, Legal'
+  },
+  {
+    q: 'في نموذج VRIO، إذا كان المورد Valuable + Rare فقط، ما نوع الميزة؟',
+    options: ['ميزة تنافسية مستدامة', 'ميزة تنافسية مؤقتة', 'ميزة غير مستغلة', 'عجز تنافسي'],
+    correct: 2,
+    explanation: 'V+R = Unused Competitive Advantage. نحتاج Imitability + Organization للاستدامة'
+  },
+  {
+    q: 'ما المرحلة الأولى في Sales Funnel؟',
+    options: ['Purchase', 'Consideration', 'Awareness', 'Decision'],
+    correct: 2,
+    explanation: 'Awareness (الوعي) هي أول مرحلة: العميل يعرف بوجودك'
+  },
+  {
+    q: 'أي من التالي ليس من معايير تقسيم السوق B2C؟',
+    options: ['الديموغرافيا', 'السلوك', 'حجم الشركة', 'الجغرافيا'],
+    correct: 2,
+    explanation: 'حجم الشركة معيار B2B، أما B2C فيستخدم: Demographic, Geographic, Psychographic, Behavioral'
+  },
+  {
+    q: 'ما المقصود بـ ROAS؟',
+    options: ['العائد على الاستثمار', 'العائد على الإنفاق الإعلاني', 'معدل التحويل', 'تكلفة الاكتساب'],
+    correct: 1,
+    explanation: 'ROAS = Return on Ad Spend = Revenue / Ad Spend. يقيس كل دولار أنفقته كم أرجع'
+  },
+  {
+    q: 'في Porter\'s 5 Forces، ما الذي يزيد من تهديد الداخلين الجدد؟',
+    options: ['حواجز دخول عالية', 'رأس مال مطلوب كبير', 'قوانين صارمة', 'حواجز دخول منخفضة'],
+    correct: 3,
+    explanation: 'حواجز الدخول المنخفضة تسهل دخول منافسين جدد، مما يزيد التهديد'
+  },
+  {
+    q: 'ما هو Kano Model؟',
+    options: ['نموذج لتحليل المنافسة', 'نموذج لتصنيف متطلبات العميل', 'نموذج للتسعير', 'نموذج للتوزيع'],
+    correct: 1,
+    explanation: 'Kano يصنف متطلبات العميل: Must-be, Performance, Delighters, Indifferent, Reverse'
+  },
+  {
+    q: 'أي مرحلة STP تأتي أولاً؟',
+    options: ['Targeting', 'Positioning', 'Segmentation', 'Analysis'],
+    correct: 2,
+    explanation: 'Segmentation (التقسيم) أولاً، ثم Targeting، ثم Positioning'
+  },
+  {
+    q: 'ما الفرق الرئيسي بين SEO و SEM؟',
+    options: ['SEO أسرع', 'SEM مجاني', 'SEO عضوي وSEM مدفوع', 'لا يوجد فرق'],
+    correct: 2,
+    explanation: 'SEO = Organic (مجاني لكن بطيء)، SEM = Paid (مدفوع لكن فوري)'
+  },
+  {
+    q: 'ما المقصود بـ TAM؟',
+    options: ['السوق المتاح للخدمة', 'إجمالي السوق المحتمل', 'السوق القابل للتحقيق', 'السوق المستهدف'],
+    correct: 1,
+    explanation: 'TAM = Total Addressable Market = إجمالي السوق المحتمل كاملاً'
+  },
+  {
+    q: 'ما هو الهدف من Retargeting؟',
+    options: ['جذب زوار جدد', 'استعادة الزوار الذين لم يشتروا', 'زيادة الوعي بالعلامة', 'تحسين SEO'],
+    correct: 1,
+    explanation: 'Retargeting يستهدف من زار موقعك ولم يتخذ إجراء، لزيادة التحويل'
+  },
+  {
+    q: 'في 8Ps، ما المقصود بـ Physical Evidence؟',
+    options: ['الأدلة المادية للخدمة', 'الموقع الفعلي', 'التغليف والبراندنج', 'كل ما سبق'],
+    correct: 3,
+    explanation: 'Physical Evidence = كل ما يلمسه العميل: Packaging, Branding, Website, Store, Documents'
+  },
+  // ====== أسئلة Quiz جديدة ======
+  {
+    q: 'ما هو On-Page SEO؟',
+    options: ['تحسين خارج الموقع', 'تحسين داخل الموقع', 'تحسين تقني فقط', 'تحسين محلي'],
+    correct: 1,
+    explanation: 'On-Page SEO = تحسين داخل الموقع: Keywords, Title, Meta, Headings, Content, Internal Links, Images'
+  },
+  {
+    q: 'ما الفرق بين Dofollow و Nofollow؟',
+    options: ['لا يوجد فرق', 'Dofollow يمرر Link Juice، Nofollow لا', 'Nofollow أقوى', 'Dofollow للإعلانات فقط'],
+    correct: 1,
+    explanation: 'Dofollow يمرر سلطة SEO (Link Juice)، Nofollow يخبر Google بتجاهل الرابط للترتيب'
+  },
+  {
+    q: 'ما هو AIDA؟',
+    options: ['نموذج لتحليل السوق', 'نموذج لكتابة الرسائل التسويقية', 'نموذج للتسعير', 'نموذج للتوزيع'],
+    correct: 1,
+    explanation: 'AIDA = Attention, Interest, Desire, Action - نموذج لكتابة رسائل تسويقية مقنعة'
+  },
+  {
+    q: 'ما هو PAS؟',
+    options: ['Problem, Agitate, Solution', 'Product, Audience, Strategy', 'Price, Audience, Sales', 'Plan, Act, Succeed'],
+    correct: 0,
+    explanation: 'PAS = Problem (المشكلة)، Agitate (التحريض)، Solution (الحل)'
+  },
+  {
+    q: 'ما هو Brand Voice؟',
+    options: ['صوت الشعار', 'أسلوب التواصل للعلامة التجارية', 'اسم العلامة', 'شعار العلامة'],
+    correct: 1,
+    explanation: 'Brand Voice = الطريقة والأسلوب الذي تتحدث به العلامة التجارية مع جمهورها'
+  },
+  {
+    q: 'ما هو Storytelling في التسويق؟',
+    options: ['كتابة قصص خيالية', 'نقل الرسائل عبر قصص لبناء ارتباط عاطفي', 'كتابة مقالات طويلة', 'نشر أخبار الشركة'],
+    correct: 1,
+    explanation: 'Storytelling = نقل الرسائل من خلال قصة تُكوّن ارتباطاً عاطفياً مع المتلقي'
+  },
+  {
+    q: 'ما هي مراحل اتخاذ قرار الشراء؟',
+    options: ['3 مراحل', '4 مراحل', '5 مراحل', '6 مراحل'],
+    correct: 2,
+    explanation: '5 مراحل: الشعور بالحاجة، البحث عن المعلومات، تقييم البدائل، اتخاذ القرار، سلوك ما بعد الشراء'
+  },
+  {
+    q: 'ما هو Prompt Engineering؟',
+    options: ['برمجة المواقع', 'فن كتابة أوامر فعالة للذكاء الاصطناعي', 'تصميم الجرافيك', 'تحليل البيانات'],
+    correct: 1,
+    explanation: 'Prompt Engineering = فن كتابة أوامر فعالة لنماذج AI للحصول على أفضل النتائج'
+  },
+  {
+    q: 'ما هي مكونات النظام التسويقي الرقمي؟',
+    options: ['Owned, Paid, Earned Media', 'SEO, SEM, SMM', 'B2B, B2C, C2C', 'Product, Price, Place'],
+    correct: 0,
+    explanation: 'Owned Media (مملوكة)، Paid Media (مدفوعة)، Earned Media (مكتسبة)'
+  },
+  {
+    q: 'ما هو Backlink؟',
+    options: ['رابط داخلي في الموقع', 'رابط من موقع آخر لموقعك', 'رابط معطل', 'رابط في السوشيال ميديا'],
+    correct: 1,
+    explanation: 'Backlink = رابط من موقع خارجي لموقعك، من أقوى عوامل ترتيب Google'
+  }
+];
+
+const frameworks = [
+  {
+    name: 'STP',
+    fullName: 'Segmentation, Targeting, Positioning',
+    icon: 'fa-bullseye',
+    color: 'from-blue-500 to-cyan-500',
+    description: 'نموذج اختيار السوق المستهدف والتموضع',
+    steps: ['Segmentation: تقسيم السوق لشرائح', 'Targeting: اختيار أفضل شريحة', 'Positioning: التموضع في ذهن العميل'],
+    use: 'قبل دخول سوق جديد أو إطلاق منتج'
+  },
+  {
+    name: 'SWOT',
+    fullName: 'Strengths, Weaknesses, Opportunities, Threats',
+    icon: 'fa-chess',
+    color: 'from-purple-500 to-pink-500',
+    description: 'تحليل الوضع الداخلي والخارجي للشركة',
+    steps: ['Strengths: نقاط القوة الداخلية', 'Weaknesses: نقاط الضعف الداخلية', 'Opportunities: الفرص الخارجية', 'Threats: التهديدات الخارجية'],
+    use: 'تقييم الوضع الاستراتيجي واتخاذ القرارات'
+  },
+  {
+    name: "Porter's 5 Forces",
+    fullName: 'قوى بورتر الخمس',
+    icon: 'fa-shield-alt',
+    color: 'from-red-500 to-orange-500',
+    description: 'تحليل جاذبية الصناعة والمنافسة',
+    steps: ['Industry Rivalry: المنافسة الداخلية', 'New Entrants: تهديد الداخلين', 'Substitutes: تهديد البدائل', 'Supplier Power: قوة الموردين', 'Buyer Power: قوة المشترين'],
+    use: 'تقييم جاذبية صناعة قبل الدخول'
+  },
+  {
+    name: '8Ps',
+    fullName: 'المزيج التسويقي الثماني',
+    icon: 'fa-th-large',
+    color: 'from-green-500 to-emerald-500',
+    description: 'عناصر المزيج التسويقي الشامل',
+    steps: ['Product, Price, Place, Promotion', 'People, Process, Physical Evidence', 'Productivity & Quality'],
+    use: 'بناء استراتيجية تسويقية متكاملة'
+  },
+  {
+    name: 'VRIO',
+    fullName: 'Value, Rarity, Imitability, Organization',
+    icon: 'fa-gem',
+    color: 'from-yellow-500 to-amber-500',
+    description: 'تحليل الموارد لتحديد الميزة التنافسية المستدامة',
+    steps: ['Value: هل يضيف قيمة؟', 'Rarity: هل هو نادر؟', 'Imitability: هل صعب التقليد؟', 'Organization: هل الشركة منظمة لاستغلاله؟'],
+    use: 'تحديد الميزة التنافسية المستدامة'
+  },
+  {
+    name: 'PESTEL',
+    fullName: 'Political, Economic, Social, Tech, Environmental, Legal',
+    icon: 'fa-globe',
+    color: 'from-indigo-500 to-blue-500',
+    description: 'تحليل البيئة الخارجية الكلية',
+    steps: ['Political: العوامل السياسية', 'Economic: الاقتصادية', 'Social: الاجتماعية', 'Technological: التقنية', 'Environmental: البيئية', 'Legal: القانونية'],
+    use: 'فهم البيئة الخارجية قبل قرارات استراتيجية'
+  },
+  {
+    name: 'TAM/SAM/SOM',
+    fullName: 'حجم السوق المحتمل',
+    icon: 'fa-chart-pie',
+    color: 'from-pink-500 to-rose-500',
+    description: 'تحديد حجم السوق على 3 مستويات',
+    steps: ['TAM: Total Addressable Market (الإجمالي)', 'SAM: Serviceable Available (المتاح)', 'SOM: Serviceable Obtainable (القابل للتحقيق)'],
+    use: 'تقييم فرص السوق وجذب المستثمرين'
+  },
+  {
+    name: 'Sales Funnel',
+    fullName: 'قمع المبيعات',
+    icon: 'fa-filter',
+    color: 'from-teal-500 to-cyan-500',
+    description: 'رحلة العميل من الوعي للولاء',
+    steps: ['Awareness: الوعي', 'Consideration: الاهتمام', 'Decision: القرار', 'Purchase: الشراء', 'Loyalty: الولاء'],
+    use: 'تصميم رحلة العميل وقياس التحويل'
+  },
+  {
+    name: 'Kano Model',
+    fullName: 'نموذج كانو لمتطلبات العميل',
+    icon: 'fa-heart',
+    color: 'from-rose-500 to-red-500',
+    description: 'تصنيف متطلبات العميل لـ 5 فئات',
+    steps: ['Must-Be: أساسية', 'Performance: أداء', 'Delighters: مفاجآت', 'Indifferent: غير مبالية', 'Reverse: عكسية'],
+    use: 'أولويات تطوير المنتج وإدارة توقعات العميل'
+  },
+  {
+    name: 'Buyer Persona',
+    fullName: 'شخصية العميل المثالي',
+    icon: 'fa-user-circle',
+    color: 'from-violet-500 to-purple-500',
+    description: 'نموذج خيالي للعميل المثالي مبني على بيانات',
+    steps: ['الديموغرافيا', 'Psychographics', 'Goals & Pain Points', 'Buying Behavior', 'Preferred Channels'],
+    use: 'توجيه كل قرارات التسويق والمنتج'
+  },
+  {
+    name: 'Ansoff Matrix',
+    fullName: 'مصفوفة أنسوف للنمو',
+    icon: 'fa-expand-arrows-alt',
+    color: 'from-cyan-500 to-blue-500',
+    description: 'استراتيجيات النمو الأربعة',
+    steps: ['Market Penetration: اختراق السوق', 'Market Development: تطوير السوق', 'Product Development: تطوير المنتج', 'Diversification: التنويع'],
+    use: 'اختيار استراتيجية النمو'
+  },
+  // ====== نماذج جديدة ======
+  {
+    name: 'AIDA',
+    fullName: 'Attention, Interest, Desire, Action',
+    icon: 'fa-bullhorn',
+    color: 'from-orange-500 to-amber-500',
+    isNew: true,
+    description: 'نموذج كلاسيكي لكتابة الرسائل التسويقية المقنعة',
+    steps: ['Attention: جذب الانتباه بعنوان أو صورة قوية', 'Interest: إثارة الاهتمام بذكر مشكلة', 'Desire: تحويل الاهتمام لرغبة عبر الفوائد', 'Action: دعوة واضحة لاتخاذ إجراء'],
+    use: 'إعلانات السوشيال ميديا، Landing Pages، Email Campaigns'
+  },
+  {
+    name: 'PAS',
+    fullName: 'Problem, Agitate, Solution',
+    icon: 'fa-exclamation-triangle',
+    color: 'from-red-600 to-pink-600',
+    isNew: true,
+    description: 'نموذج يركز على مشكلة العميل ويهيجها ثم يقدم الحل',
+    steps: ['Problem: ذكر المشكلة التي يواجهها العميل', 'Agitate: تحريض وتعميق الألم نفسياً', 'Solution: تقديم منتجك/خدمتك كحل'],
+    use: 'منتجات تحل مشكلة واضحة، إعلانات مقنعة'
+  },
+  {
+    name: 'BAB',
+    fullName: 'Before-After-Bridge',
+    icon: 'fa-bridge',
+    color: 'from-emerald-500 to-teal-500',
+    isNew: true,
+    description: 'نموذج يُظهر التحول الذي سيحدثه منتجك',
+    steps: ['Before: وصف الوضع الحالي السيء', 'After: وصف الوضع الجيد بعد المنتج', 'Bridge: كيف يصل العميل عبر منتجك'],
+    use: 'خدمات استشارية، برامج تدريب، منتجات تحول الحياة'
+  },
+  {
+    name: 'FAB',
+    fullName: 'Features, Advantages, Benefits',
+    icon: 'fa-cogs',
+    color: 'from-blue-600 to-indigo-600',
+    isNew: true,
+    description: 'نموذج مثالي للمنتجات التقنية والمعقدة',
+    steps: ['Features: الخصائص التقنية للمنتج', 'Advantages: كيف يميزك عن المنافسين', 'Benefits: كيف يحسن حياة العميل'],
+    use: 'المنتجات التقنية والمعقدة، B2B'
+  },
+  {
+    name: 'STAR',
+    fullName: 'Situation, Task, Action, Result',
+    icon: 'fa-star',
+    color: 'from-yellow-500 to-orange-500',
+    isNew: true,
+    description: 'نموذج لكتابة قصص النجاح وشهادات العملاء',
+    steps: ['Situation: الوضع الحالي', 'Task: التحدي أو المهمة', 'Action: الإجراء المتخذ', 'Result: النتيجة المحققة'],
+    use: 'شهادات العملاء، دراسات الحالة، صفحات الهبوط'
+  },
+  {
+    name: 'Storytelling',
+    fullName: 'فن سرد القصص التسويقي',
+    icon: 'fa-book-open',
+    color: 'from-purple-600 to-pink-600',
+    isNew: true,
+    description: 'نقل الرسائل عبر قصص لبناء ارتباط عاطفي',
+    steps: ['البطل (العميل)', 'المشكلة/التحدي', 'اكتشاف الحل (منتجك)', 'العواطف أثناء التحول', 'النتيجة الإيجابية', 'CTA: الإجراء المطلوب'],
+    use: 'حملات الإطلاق، بناء العلامة التجارية، Inbound Marketing'
+  },
+  {
+    name: 'SEO Pyramid',
+    fullName: 'هرم تحسين محركات البحث',
+    icon: 'fa-search',
+    color: 'from-green-600 to-emerald-600',
+    isNew: true,
+    description: 'البنية الشاملة لتحسين محركات البحث',
+    steps: ['Technical SEO: البنية التقنية', 'On-Page SEO: داخل الصفحة', 'Off-Page SEO: خارج الصفحة', 'Local SEO: البحث المحلي', 'Content: جودة المحتوى'],
+    use: 'بناء استراتيجية SEO متكاملة'
+  },
+  {
+    name: 'Consumer Decision Journey',
+    fullName: 'رحلة اتخاذ قرار الشراء',
+    icon: 'fa-route',
+    color: 'from-amber-500 to-yellow-500',
+    isNew: true,
+    description: 'مراحل اتخاذ قرار الشراء لدى المستهلك',
+    steps: ['الشعور بالحاجة', 'البحث عن المعلومات', 'تقييم البدائل', 'اتخاذ قرار الشراء', 'سلوك ما بعد الشراء'],
+    use: 'فهم سلوك العميل وتصميم Funnel'
+  },
+  {
+    name: 'Digital Marketing System',
+    fullName: 'النظام التسويقي الرقمي',
+    icon: 'fa-network-wired',
+    color: 'from-cyan-600 to-blue-600',
+    isNew: true,
+    description: 'مكونات النظام التسويقي الرقمي المتكامل',
+    steps: ['Owned Media: قنوات مملوكة', 'Paid Media: إعلانات مدفوعة', 'Earned Media: ما يُكتسب طبيعياً', 'التفاعل بين المكونات'],
+    use: 'بناء استراتيجية تسويق رقمي شاملة'
+  }
+];
+
+const terms = [
+  { term: 'KPI', full: 'Key Performance Indicator', desc: 'مؤشر أداء رئيسي يقيس التقدم نحو هدف. يجب أن يكون SMART.', example: 'Conversion Rate, ROAS, CAC' },
+  { term: 'ROI', full: 'Return on Investment', desc: 'العائد على الاستثمار. (Revenue - Cost) / Cost × 100', example: 'استثمرنا 10K$ وعدنا 30K$ = ROI 200%' },
+  { term: 'ROAS', full: 'Return on Ad Spend', desc: 'العائد على الإنفاق الإعلاني. Revenue / Ad Spend', example: 'ROAS 3x = كل 1$ أنفقناها أرجع 3$' },
+  { term: 'CAC', full: 'Customer Acquisition Cost', desc: 'تكلفة اكتساب العميل. Total Marketing Cost / New Customers', example: 'أنفقنا 10K$ وحصلنا على 100 عميل = CAC 100$' },
+  { term: 'CLV/LTV', full: 'Customer Lifetime Value', desc: 'القيمة الدائمة للعميل. متوسط الإيراد × مدة العلاقة', example: 'عميل يشتري بـ 50$/شهر لمدة 3 سنوات = CLV 1800$' },
+  { term: 'CTR', full: 'Click-Through Rate', desc: 'معدل النقر. Clicks / Impressions × 100', example: '1000 ظهور و50 نقرة = CTR 5%' },
+  { term: 'CPC', full: 'Cost Per Click', desc: 'تكلفة النقرة الواحدة. Total Cost / Clicks', example: 'أنفقنا 100$ وحصلنا على 200 نقرة = CPC 0.5$' },
+  { term: 'CPA', full: 'Cost Per Acquisition', desc: 'تكلفة الاكتساب. Total Cost / Conversions', example: 'أنفقنا 1000$ وحصلنا على 50 عميل = CPA 20$' },
+  { term: 'CPL', full: 'Cost Per Lead', desc: 'تكلفة الـ Lead الواحد', example: 'أنفقنا 500$ وحصلنا على 100 Lead = CPL 5$' },
+  { term: 'NPS', full: 'Net Promoter Score', desc: 'مؤشر ولاء العملاء. %Promoters - %Detractors', example: 'NPS +50 = ممتاز، NPS +70 = عالمي' },
+  { term: 'SEO', full: 'Search Engine Optimization', desc: 'تحسين الموقع للظهور طبيعياً في محركات البحث', example: 'On-page, Off-page, Technical SEO' },
+  { term: 'SEM', full: 'Search Engine Marketing', desc: 'إعلانات مدفوعة في محركات البحث (PPC)', example: 'Google Ads, Bing Ads' },
+  { term: 'PPC', full: 'Pay Per Click', desc: 'نموذج إعلاني تدفع فقط عند النقر', example: 'Google Ads, Facebook Ads' },
+  { term: 'CRM', full: 'Customer Relationship Management', desc: 'نظام إدارة علاقات العملاء', example: 'Salesforce, HubSpot, Zoho' },
+  { term: 'MQL', full: 'Marketing Qualified Lead', desc: 'Lead مؤهل تسويقياً (استوفى معايير التسويق)', example: 'حمّل Whitepaper، حضر Webinar' },
+  { term: 'SQL', full: 'Sales Qualified Lead', desc: 'Lead مؤهل مبيعياً (جاهز للمتابعة من المبيعات)', example: 'طلب Demo، اتصل مباشرة' },
+  { term: 'USP', full: 'Unique Selling Proposition', desc: 'عرض البيع الفريد - ما يميزك عن المنافسين', example: 'FedEx: "When it absolutely, positively has to be there overnight"' },
+  { term: 'CTA', full: 'Call To Action', desc: 'دعوة لاتخاذ إجراء (زر، رابط، نص)', example: '"Buy Now", "Sign Up Free", "Learn More"' },
+  { term: 'B2B', full: 'Business to Business', desc: 'تسويق بين الشركات', example: 'Salesforce, Slack, Oracle' },
+  { term: 'B2C', full: 'Business to Consumer', desc: 'تسويق مباشر للمستهلك النهائي', example: 'Amazon, Nike, Coca-Cola' },
+  { term: 'SaaS', full: 'Software as a Service', desc: 'برمجيات كخدمة (اشتراك شهري)', example: 'Netflix, Dropbox, Zoom' },
+  { term: 'A/B Test', full: 'Split Testing', desc: 'مقارنة نسختين لتحديد الأفضل', example: 'اختبار Headline, CTA, Image' },
+  { term: 'Funnel', full: 'Sales/Marketing Funnel', desc: 'قمع المبيعات - رحلة العميل', example: 'Awareness → Consideration → Decision → Purchase' },
+  { term: 'Conversion Rate', full: 'معدل التحويل', desc: 'نسبة من اتخذ الإجراء المطلوب. Conversions / Visitors × 100', example: '100 زائر و5 اشتروا = CR 5%' },
+  { term: 'Bounce Rate', full: 'معدل الارتداد', desc: 'نسبة من غادر الموقع من صفحة واحدة', example: 'Bounce Rate 70% = مشكلة في UX أو Content' },
+  { term: 'Impressions', full: 'الانطباع/الظهور', desc: 'عدد مرات ظهور الإعلان/المحتوى', example: '10K Impressions = ظهر 10,000 مرة' },
+  { term: 'Reach', full: 'الوصول', desc: 'عدد الأشخاص الفريدين الذين شاهدوا', example: 'Reach 5K = 5000 شخص فريد' },
+  { term: 'Engagement', full: 'التفاعل', desc: 'مقياس تفاعل الجمهور (Likes, Comments, Shares)', example: 'Engagement Rate = Engagements / Reach × 100' },
+  { term: 'Churn Rate', full: 'معدل الفقد', desc: 'نسبة العملاء الذين توقفوا عن الخدمة', example: 'Churn 5%/شهر = خسارة 5% من قاعدة العملاء' },
+  { term: 'Retention', full: 'الاحتفاظ بالعملاء', desc: 'القدرة على الاحتفاظ بالعملاء', example: 'Retention 80% = 80% من العملاء استمروا' },
+  // ====== مصطلحات جديدة ======
+  { term: 'SERP', full: 'Search Engine Results Page', desc: 'صفحة نتائج محرك البحث التي تظهر بعد البحث', example: 'الظهور في المركز الأول في SERP = Traffic أكبر' },
+  { term: 'Backlink', full: 'الرابط الخلفي', desc: 'رابط من موقع خارجي لموقعك، من أقوى عوامل ترتيب Google', example: '100 Backlink من مواقع عالية DA = ترتيب أفضل' },
+  { term: 'Domain Authority', full: 'سلطة النطاق', desc: 'مقياس من 1-100 لقوة موقعك في محركات البحث (Moz)', example: 'DA 50+ = موقع قوي، DA 80+ = موقع عالمي' },
+  { term: 'Anchor Text', full: 'نص الرابط', desc: 'النص القابل للنقر في الرابط', example: '"أفضل منتج" = Anchor Text وصفي' },
+  { term: 'Meta Description', full: 'الوصف التعريفي', desc: 'وصف قصير للصفحة يظهر في نتائج البحث (120-160 حرف)', example: 'Meta Description جيد = CTR أعلى' },
+  { term: 'Title Tag', full: 'وسم العنوان', desc: 'عنوان الصفحة في نتائج البحث (50-60 حرف)', example: 'Title يحتوي Keyword = ترتيب أفضل' },
+  { term: 'Schema Markup', full: 'البيانات المنظمة', desc: 'كود يُساعد Google على فهم محتوى الصفحة', example: 'Schema للمنتج = ظهور السعر والتقييمات في SERP' },
+  { term: 'Keyword Density', full: 'كثافة الكلمة المفتاحية', desc: 'نسبة تكرار الكلمة المفتاحية من إجمالي الكلمات (2-3%)', example: 'كثافة 2-3% = مثالية، أكثر = Keyword Stuffing' },
+  { term: 'Long-tail Keyword', full: 'الكلمة المفتاحية الطويلة', desc: 'كلمات مفتاحية محددة (3+ كلمات)، منافسة أقل، تحويل أعلى', example: '"شراء حذاء رياضي نايك أحمر مقاس 42"' },
+  { term: 'Branding', full: 'العلامة التجارية', desc: 'بناء الصورة الذهنية والانطباع عن الشركة/المنتج', example: 'Apple = الابتكار، Nike = التحفيز' },
+  { term: 'Brand Voice', full: 'صوت العلامة', desc: 'أسلوب وطريقة تواصل العلامة التجارية مع جمهورها', example: 'Nike: قوي، Apple: راقي، Instagram: ودود' },
+  { term: 'Mission', full: 'رسالة الشركة', desc: 'سبب وجود الشركة، ماذا تفعل، لمن، وكيف', example: 'Google: "تنظيم معلومات العالم وجعلها متاحة للجميع"' },
+  { term: 'Vision', full: 'رؤية الشركة', desc: 'المستقبل الذي تسعى الشركة لتحقيقه على المدى الطويل', example: 'Tesla: "تسريع الانتقال للعالم الكهربائي"' },
+  { term: 'Values', full: 'قيم الشركة', desc: 'المبادئ الأخلاقية والمهنية التي توجه قرارات الشركة', example: 'الشفافية، الابتكار، الاستدامة، الجودة' },
+  { term: 'Logo', full: 'الشعار', desc: 'رمز بصري يمثل الهوية التجارية (نصي، حرفي، رمزي، مركب)', example: 'Nike Swoosh, Apple Apple, McDonald\'s M' },
+  { term: 'Storytelling', full: 'فن سرد القصص', desc: 'نقل الرسائل عبر قصص لبناء ارتباط عاطفي', example: 'قصة نجاح عميل = تحويل أعلى' },
+  { term: 'Pain Points', full: 'نقاط الألم', desc: 'المشاكل والتحديات التي يواجهها العميل', example: 'مالي، إنتاجية، دعم فني، اجتماعي، صحي، نفسي' },
+  { term: 'Content Marketing', full: 'التسويق بالمحتوى', desc: 'إنشاء محتوى قيم لجذب واحتفاظ بالعملاء', example: 'Blog, Video, Podcast, Infographic' },
+  { term: 'Owned Media', full: 'الوسائط المملوكة', desc: 'قنوات تملكها الشركة (موقع، مدونة، سوشيال)', example: 'موقعك، حساباتك على السوشيال ميديا' },
+  { term: 'Paid Media', full: 'الوسائط المدفوعة', desc: 'إعلانات مدفوعة للوصول للجمهور', example: 'Google Ads, Meta Ads, Influencer Marketing' },
+  { term: 'Earned Media', full: 'الوسائط المكتسبة', desc: 'ما تكسبه بشكل طبيعي (مراجعات، مشاركات، PR)', example: 'تقييمات العملاء، مشاركات عضوية' },
+  { term: 'Prompt Engineering', full: 'هندسة الأوامر', desc: 'فن كتابة أوامر فعالة لنماذج الذكاء الاصطناعي', example: 'Chain of Thought, Role-based, Few-shot' },
+  { term: 'Temperature', full: 'معامل الحرارة', desc: 'معامل في AI يتحكم في إبداع النموذج (عالي = إبداع، منخفض = دقة)', example: 'Temperature 0.9 = إبداعي، 0.1 = دقيق' },
+  { term: 'Weighted Index', full: 'المؤشر الموزون', desc: 'أداة لتقييم وجاذبية الأسواق بناءً على عوامل متعددة بأوزان', example: 'تقييم 3 أسواق = اختيار الأفضل للدخول' },
+  { term: 'E-E-A-T', full: 'Experience, Expertise, Authoritativeness, Trustworthiness', desc: 'معايير Google لتقييم جودة المحتوى', example: 'محتوى E-E-A-T عالي = ترتيب أفضل' },
+  { term: 'FOMO', full: 'Fear Of Missing Out', desc: 'الخوف من فقدان الفرصة، يُستخدم في التسويق لخلق إلحاح', example: '"عرض محدود - ينتهي خلال 24 ساعة"' },
+  { term: 'UGC', full: 'User Generated Content', desc: 'محتوى يُنشئه المستخدمون عن علامتك التجارية', example: 'مراجعات العملاء، صورهم مع منتجك' },
+  { term: 'Influencer', full: 'المؤثر', desc: 'شخص لديه متابعين كثير ويؤثر على قرارات الشراء', example: 'مؤثر في مجال الصحة يروج لمنتج طبيعي' }
+];
+
+// ============ FUNCTIONS ============
+function switchTab(tab) {
+  document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('[id^="tab-"]').forEach(el => {
+    el.classList.remove('tab-active');
+    el.classList.add('glass');
+  });
+  document.getElementById(`content-${tab}`).classList.remove('hidden');
+  const activeTab = document.getElementById(`tab-${tab}`);
+  activeTab.classList.remove('glass');
+  activeTab.classList.add('tab-active');
+}
+
+function renderQuestions() {
+  const list = document.getElementById('questionsList');
+  const category = document.getElementById('categoryFilter').value;
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  
+  const filtered = questions.filter(q => {
+    const matchCategory = category === 'all' || q.category === category;
+    const matchSearch = q.q.toLowerCase().includes(search);
+    return matchCategory && matchSearch;
+  });
+  
+  document.getElementById('questionCount').textContent = filtered.length;
+  
+  list.innerHTML = filtered.map(q => `
+    <div class="glass rounded-xl overflow-hidden card-hover">
+      <button onclick="toggleAccordion(${q.id})" class="w-full p-5 text-right flex items-start gap-3 hover:bg-white/5 transition">
+        <div class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center flex-shrink-0 mt-1">
+          <i class="fas fa-question text-sm"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="chip ${getCategoryColor(q.category)}">${getCategoryLabel(q.category)}</span>
+            ${q.isNew ? '<span class="new-badge">جديد</span>' : ''}
+          </div>
+          <h3 class="font-bold text-lg">${q.q}</h3>
+        </div>
+        <i class="fas fa-chevron-down transition-transform" id="icon-${q.id}"></i>
+      </button>
+      <div class="accordion-content" id="acc-${q.id}">
+        <div class="p-5 pt-0 border-t border-white/10">
+          <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-lightbulb text-yellow-400"></i>
+            <span class="font-bold text-yellow-400">الإجابة المثالية:</span>
+          </div>
+          <div class="text-gray-300 leading-relaxed whitespace-pre-line">${q.a}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleAccordion(id) {
+  const acc = document.getElementById(`acc-${id}`);
+  const icon = document.getElementById(`icon-${id}`);
+  acc.classList.toggle('open');
+  icon.style.transform = acc.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+function getCategoryColor(cat) {
+  const colors = {
+    technical: 'bg-blue-500/20 text-blue-300',
+    strategic: 'bg-purple-500/20 text-purple-300',
+    behavioral: 'bg-green-500/20 text-green-300',
+    salary: 'bg-yellow-500/20 text-yellow-300',
+    seo: 'bg-emerald-500/20 text-emerald-300',
+    branding: 'bg-pink-500/20 text-pink-300',
+    content: 'bg-orange-500/20 text-orange-300',
+    consumer: 'bg-cyan-500/20 text-cyan-300'
+  };
+  return colors[cat] || 'bg-gray-500/20 text-gray-300';
+}
+
+function getCategoryLabel(cat) {
+  const labels = {
+    technical: 'تقنية',
+    strategic: 'استراتيجية',
+    behavioral: 'سلوكية',
+    salary: 'الراتب',
+    seo: 'SEO',
+    branding: 'العلامة التجارية',
+    content: 'المحتوى',
+    consumer: 'سلوك المستهلك'
+  };
+  return labels[cat] || cat;
+}
+
+function filterQuestions() {
+  renderQuestions();
+}
+
+function renderScenarios() {
+  const list = document.getElementById('scenariosList');
+  list.innerHTML = scenarios.map((s, i) => `
+    <div class="glass rounded-xl p-6 card-hover scenario-card">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-${s.color}-500/20 flex items-center justify-center">
+          <i class="fas ${s.icon} text-${s.color}-400 text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-bold text-lg">${s.title}</h3>
+          ${s.isNew ? '<span class="new-badge">جديد</span>' : ''}
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+          <div class="text-xs text-blue-300 mb-1"><i class="fas fa-info-circle ml-1"></i>الوضع</div>
+          <div class="text-sm">${s.situation}</div>
+        </div>
+        <div class="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+          <div class="text-xs text-yellow-300 mb-1"><i class="fas fa-bullseye ml-1"></i>التحدي</div>
+          <div class="text-sm">${s.challenge}</div>
+        </div>
+        <div class="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
+          <div class="text-xs text-green-300 mb-1"><i class="fas fa-check-circle ml-1"></i>الحل المقترح</div>
+          <div class="text-sm whitespace-pre-line">${s.solution}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+let quizScore = 0, quizWrong = 0;
+function renderQuiz() {
+  const list = document.getElementById('quizList');
+  list.innerHTML = quizQuestions.map((q, i) => `
+    <div class="glass rounded-xl p-6" id="quiz-q-${i}">
+      <div class="flex items-start gap-3 mb-4">
+        <div class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center flex-shrink-0">
+          <span class="font-bold text-sm">${i+1}</span>
+        </div>
+        <h3 class="font-bold text-lg">${q.q}</h3>
+      </div>
+      <div class="space-y-2">
+        ${q.options.map((opt, j) => `
+          <div onclick="checkAnswer(${i}, ${j})" class="quiz-option p-3 rounded-lg border border-white/10" id="quiz-${i}-${j}">
+            ${opt}
+          </div>
+        `).join('')}
+      </div>
+      <div class="hidden mt-4 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20" id="quiz-exp-${i}">
+        <div class="text-xs text-indigo-300 mb-1"><i class="fas fa-lightbulb ml-1"></i>الشرح</div>
+        <div class="text-sm">${q.explanation}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function checkAnswer(qIdx, optIdx) {
+  const q = quizQuestions[qIdx];
+  const correct = q.correct;
+  
+  q.options.forEach((_, j) => {
+    const el = document.getElementById(`quiz-${qIdx}-${j}`);
+    el.onclick = null;
+    el.style.cursor = 'default';
+    if (j === correct) el.classList.add('correct');
+    else if (j === optIdx) el.classList.add('wrong');
+  });
+  
+  document.getElementById(`quiz-exp-${qIdx}`).classList.remove('hidden');
+  
+  if (optIdx === correct) {
+    quizScore++;
+  } else {
+    quizWrong++;
+  }
+  document.getElementById('quizScore').textContent = quizScore;
+  document.getElementById('quizWrong').textContent = quizWrong;
+}
+
+function resetQuiz() {
+  quizScore = 0;
+  quizWrong = 0;
+  document.getElementById('quizScore').textContent = 0;
+  document.getElementById('quizWrong').textContent = 0;
+  renderQuiz();
+}
+
+function renderFrameworks() {
+  const list = document.getElementById('frameworksList');
+  list.innerHTML = frameworks.map(f => `
+    <div class="glass rounded-xl p-6 card-hover">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center">
+          <i class="fas ${f.icon} text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <h3 class="font-bold text-lg">${f.name}</h3>
+            ${f.isNew ? '<span class="new-badge">جديد</span>' : ''}
+          </div>
+          <p class="text-xs text-gray-400">${f.fullName}</p>
+        </div>
+      </div>
+      <p class="text-sm text-gray-300 mb-3">${f.description}</p>
+      <div class="space-y-1 mb-3">
+        ${f.steps.map(s => `<div class="text-xs text-gray-400 flex gap-2"><i class="fas fa-chevron-left text-indigo-400 mt-1 flex-shrink-0"></i><span>${s}</span></div>`).join('')}
+      </div>
+      <div class="pt-3 border-t border-white/10">
+        <div class="text-xs text-gray-400"><i class="fas fa-clock ml-1"></i>متى يُستخدم: <span class="text-indigo-300">${f.use}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTerms() {
+  const list = document.getElementById('termsList');
+  list.innerHTML = terms.map(t => `
+    <div class="glass rounded-xl p-5 card-hover">
+      <div class="flex items-start justify-between mb-2">
+        <div>
+          <h3 class="font-bold text-xl gradient-text">${t.term}</h3>
+          <p class="text-xs text-gray-400">${t.full}</p>
+        </div>
+        <i class="fas fa-bookmark text-indigo-400"></i>
+      </div>
+      <p class="text-sm text-gray-300 mb-3">${t.desc}</p>
+      <div class="p-2 rounded-lg bg-white/5">
+        <div class="text-xs text-gray-400 mb-1"><i class="fas fa-lightbulb text-yellow-400 ml-1"></i>مثال</div>
+        <div class="text-xs text-indigo-300">${t.example}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+let currentSimIdx = 0;
+function randomQuestion() {
+  currentSimIdx = Math.floor(Math.random() * questions.length);
+  showSimQuestion();
+}
+
+function nextQuestion() {
+  currentSimIdx = (currentSimIdx + 1) % questions.length;
+  showSimQuestion();
+}
+
+function showSimQuestion() {
+  const q = questions[currentSimIdx];
+  document.getElementById('simQuestion').textContent = q.q;
+  document.getElementById('simAnswerText').textContent = q.a;
+  document.getElementById('simCategory').textContent = getCategoryLabel(q.category);
+  document.getElementById('simNumber').textContent = currentSimIdx + 1;
+  document.getElementById('simTotal').textContent = questions.length;
+  document.getElementById('simAnswer').classList.add('hidden');
+}
+
+function toggleAnswer() {
+  document.getElementById('simAnswer').classList.toggle('hidden');
+}
+
+// ============ INIT ============
+renderQuestions();
+renderScenarios();
+renderQuiz();
+renderFrameworks();
+renderTerms();
+document.getElementById('simTotal').textContent = questions.length;
+document.getElementById('totalQCount').textContent = questions.length + '+';
+document.getElementById('totalSCount').textContent = scenarios.length;
+document.getElementById('totalFCount').textContent = frameworks.length;
+</script>
+
+</body>
+</html>
